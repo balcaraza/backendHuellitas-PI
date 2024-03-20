@@ -1,0 +1,27 @@
+package com.huellitas.huellitas.model;
+
+public class productosModel {
+	private int id_producto;
+	private String imagen;
+	private String nombre_producto;
+	private String descripcion;
+	private double precio;
+	private static int total =0;
+	//contructor
+	public productosModel(int id_producto, String imagen, String nombre_producto, String descripcion, double precio) {
+		super();
+		
+		this.imagen = imagen;
+		this.nombre_producto = nombre_producto;
+		this.descripcion = descripcion;
+		this.precio = precio;
+		productosModel.total++;
+		id_producto=productosModel.total;
+	}
+	//constructor vacio
+	public productosModel() {
+		
+	}
+	
+	
+}

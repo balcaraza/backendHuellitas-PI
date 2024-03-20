@@ -1,0 +1,15 @@
+package com.huellitas.huellitas.model;
+
+public class Roles {
+	private String tipo_rol;
+	 private int id_rol;
+	 private static int total =0;
+	 
+	public Roles(String tipo_rol, int id_rol) {
+		super();
+		Roles.total++;
+		
+		this.tipo_rol = tipo_rol;
+		this.id_rol = Roles.total;
+	}
+}
