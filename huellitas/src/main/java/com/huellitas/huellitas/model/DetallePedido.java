@@ -13,6 +13,7 @@ public class DetallePedido {
 	private String usuario_no_usuario; 
 	private String usuario_roles_id_rol; 
 	private static int total =0;
+	//constructores
 	public DetallePedido(int id_detalle_compra, String nombre_completo, String calle, String municipio, String estado,
 			String codigo_postal, String num_int_ext, String telefono, String instrucciones, String usuario_no_usuario,
 			String usuario_roles_id_rol) {
@@ -37,9 +38,6 @@ public class DetallePedido {
 	//getters y setters
 	public int getId_detalle_compra() {
 		return id_detalle_compra;
-	}
-	public void setId_detalle_compra(int id_detalle_compra) {
-		this.id_detalle_compra = id_detalle_compra;
 	}
 	public String getNombre_completo() {
 		return nombre_completo;

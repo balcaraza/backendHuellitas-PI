@@ -29,11 +29,6 @@ public class DetalleTarjeta {
 	public int getId_pago() {
 		return id_pago;
 	}
-
-	public void setId_pago(int id_pago) {
-		this.id_pago = id_pago;
-	}
-
 	public String getNombre_tarjeta() {
 		return nombre_tarjeta;
 	}

@@ -23,10 +23,11 @@ public class ProductosModel {
 		ProductosModel.total++;
 		id_producto=ProductosModel.total;
 	}
+	//getters y setters
 	public int getId_producto() {
 		return id_producto;
 	}
-	//getters y setters
+	
 	public String getImagen() {
 		return imagen;
 	}
