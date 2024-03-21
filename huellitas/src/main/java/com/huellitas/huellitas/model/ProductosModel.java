@@ -8,7 +8,7 @@ public class ProductosModel {
 	private double precio;
 	private static int total =0;
 	//contructor
-	public ProductosModel(int id_producto, String imagen, String nombre_producto, String descripcion, double precio) {
+	public ProductosModel(String imagen, String nombre_producto, String descripcion, double precio) {
 		super();
 		
 		this.imagen = imagen;
