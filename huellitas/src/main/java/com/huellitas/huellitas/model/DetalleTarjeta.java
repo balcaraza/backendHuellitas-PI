@@ -9,7 +9,7 @@ public class DetalleTarjeta {
 	private String codigo_seguridad;
 	private static int total = 0;
 	
-	public DetalleTarjeta(int id_pago, String nombre_tarjeta, String no_tarjeta, int mes, int anio,
+	public DetalleTarjeta(String nombre_tarjeta, String no_tarjeta, int mes, int anio,
 			String codigo_seguridad) {
 		super();
 		DetalleTarjeta.total++;
