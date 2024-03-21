@@ -42,7 +42,6 @@ INDEX VERSION 1.134+D:\Usuarios\rey_j\Documentos\backendHuellitas-PI\.metadata\.
 1856228125.index
 4163715033.index
 3741025425.index
-435127986.index
 3883697893.index
 1865797976.index
 4030948779.index

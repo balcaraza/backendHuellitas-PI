@@ -5,7 +5,7 @@ public class Roles {
 	 private int id_rol;
 	 private static int total =0;
 	 //constructores
-	public Roles(String tipo_rol, int id_rol) {
+	public Roles(String tipo_rol) {
 		super();
 		this.tipo_rol = tipo_rol;
 		Roles.total++;

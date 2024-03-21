@@ -1,20 +1,19 @@
 package com.huellitas.huellitas.model;
 
 public class Pedidos {
-	private int id_pedido;
 	private String fechaPedido; //adorno
 	private String status;
 	private int usuarios_no_usuario; // relación
+	private int id_pedido;
 	private static int total = 0;
 	//Constructores
-	public Pedidos(String fechaPedido, String status, int usuarios_no_usuario, int id_pedido) {
+	public Pedidos(String fechaPedido, String status, int usuarios_no_usuario) {
 		super();
-		Pedidos.total++;
-		id_pedido = Pedidos.total;
 		this.fechaPedido = fechaPedido;
 		this.status = status;
 		this.usuarios_no_usuario = usuarios_no_usuario;
-		
+		Pedidos.total++;
+		id_pedido = Pedidos.total;
 	}
 	public Pedidos() {
 		Pedidos.total++;
