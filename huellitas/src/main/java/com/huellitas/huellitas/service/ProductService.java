@@ -23,20 +23,16 @@ public class ProductService {
 	}
 
 	public ArrayList<ProductosModel> getAllProducts() {
-		// TODO Auto-generated method stub
 		return list;//devuelve la lista de productos
 	}
 
 	public ProductosModel getProduct(int prodId) {
-		// TODO Auto-generated method stub
 		ProductosModel productoTemporal= null;
 		for(ProductosModel product:list) {
 			if(product.getId_producto()==prodId) {
 				productoTemporal = product;
-				break;
-						
+				break;		
 			}
-			
 		}
 		return productoTemporal;
 	}
@@ -61,7 +57,11 @@ public class ProductService {
 		return null;
 	}
 
-	public ProductosModel updateProductModel(int prodId, String imagen, String nombre_producto, String descripcion,
+
+
+	/*
+	 //pediente en revision por error 500 de servidor, error de petic
+	  public ProductosModel updateProductModel(int prodId, String imagen, String nombre_producto, String descripcion,
 			Double precio) {
 		// TODO Auto-generated method stub
 		ProductosModel productoTemporal=null;
@@ -76,9 +76,26 @@ public class ProductService {
 				}
 			}
 		return productoTemporal;
+	}*/
+
+
+	public ProductosModel updateProductModel(int prodId, String imagen, String nombre_producto, String descripcion,
+			Double precio) {
+		// TODO Auto-generated method stub
+			ProductosModel productM=null;
+			for (ProductosModel product:list) {
+				if(product.getId_producto()==prodId) {
+					if(imagen!=null)product.setImagen(imagen);
+					if(nombre_producto!=null)product.setNombre_producto(nombre_producto);
+					if(descripcion!=null)product.setDescripcion(descripcion);
+					if(precio!=null)product.setPrecio(precio);
+					productM=product;
+					break;
+					
+				}
+			}
+			
+		return productM;
 	}
-
-
-	
 	
 }

@@ -10,28 +10,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.huellitas.huellitas.model.ProductosModel;
 import com.huellitas.huellitas.service.ProductService;
 
 @RestController
-@RequestMapping("/api/products/")
+@RequestMapping(path="/api/products/")
 public class productosController {
 	
 	private final ProductService productService;// variable service
 
 	@Autowired
-public productosController(ProductService productService) {
-	this.productService= productService;//instancia de la clase. 
-}
+	public productosController(ProductService productService) {
+		this.productService= productService;//instancia de la clase. 
+	}
+	
 	@GetMapping
 	public ArrayList<ProductosModel> getProduct(){
 		return productService.getAllProducts();
 		
 	}
-	//get para un solo producto.
-	@GetMapping (path = "{prodId}")
+	
+	@GetMapping (path = "prodId")
 	public ProductosModel getProduct(@PathVariable("prodId")int prodId) {
 		return productService.getProduct(prodId);
 	}
@@ -46,7 +48,8 @@ public productosController(ProductService productService) {
 	public ProductosModel deleteProduct(@PathVariable("prodId")int prodId) {
 		return productService.deleteProduct(prodId);
 	}
-	@PutMapping(path = "{prodId}")
+	
+	/*@PutMapping(path = "{prodId}")
 	public ProductosModel updateProductModel(@PathVariable("{prodId}" )int prodId,
 			@RequestBody ProductosModel productosModel) {
 		
@@ -56,7 +59,18 @@ public productosController(ProductService productService) {
 				productosModel.getDescripcion(),
 				Double.valueOf(productosModel.getPrecio()));
 		
+	}*/
+	
+	//por parametro
+	@PutMapping(path = "{prodId}")
+	public ProductosModel updateProductModel(@PathVariable("prodId")int prodId,
+		@RequestParam (required = false) String imagen,
+		@RequestParam (required = false) String nombre_producto,
+		@RequestParam (required = false)String descripcion, 
+		@RequestParam (required = false) Double precio) {
+		return productService.updateProductModel(prodId, imagen,nombre_producto, descripcion, precio);
 	}
+	
 	
 	
 }
