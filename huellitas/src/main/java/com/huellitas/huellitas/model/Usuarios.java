@@ -1,37 +1,46 @@
 package com.huellitas.huellitas.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//POJO plain Old Java Object
+@Entity
+@Table(name="Usuarios")
 public class Usuarios {
-	private int no_usuario;
+	@Id
+	@GeneratedValue (strategy=GenerationType.IDENTITY)
+	@Column (name="no_usuario", unique=true, nullable=false)
+	private Long no_usuario;
+	@Column(nullable=false)
 	private String nombre;
+	@Column(nullable=false)
 	private String telefono;
-	private String correo_electronico;
+	@Column(name="correo_electronico", nullable=false)
+	private String correo;
+	@Column(nullable=false)
 	private String password_usuario;
-	private int roles_id_rol;
-	private static int total=0;
+	@Column(name="roles_id_rol", nullable=false)
+	private Integer idRol;
+	
 	//1.-Constructor
-	public Usuarios(String nombre, String telefono, String correo_electronico, String password_usuario,
-			int roles_id_rol) {
+	public Usuarios(String nombre, String telefono, String correo, String password_usuario,
+			Integer idRol) {
 		super();
 		this.nombre = nombre;
 		this.telefono = telefono;
-		this.correo_electronico = correo_electronico;
+		this.correo = correo;
 		this.password_usuario = password_usuario;
-		this.roles_id_rol = roles_id_rol;
-		Usuarios.total++;
-		no_usuario=Usuarios.total;
+		this.idRol = idRol;
 	}//Constructor
 
-//1.1.-Constructor Vacio//Post
-	public Usuarios() {
-		Usuarios.total++;
-		no_usuario=Usuarios.total;
-	}
+    //1.1.-Constructor Vacio//Post
+	public Usuarios() {}//constructor
 
 	//2.-Getters and Setters
-	public int getNo_usuario() {
-		return no_usuario;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -48,6 +57,14 @@ public class Usuarios {
 		this.telefono = telefono;
 	}
 
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo){
+		this.correo = correo;
+	}
+
 	public String getPassword_usuario() {
 		return password_usuario;
 	}
@@ -56,23 +73,26 @@ public class Usuarios {
 		this.password_usuario = password_usuario;
 	}
 
-	public int getRoles_id_rol() {
-		return roles_id_rol;
+	public Integer getIdRol() {
+		return idRol;
 	}
 
-	public void setRoles_id_rol(int roles_id_rol) {
-		this.roles_id_rol = roles_id_rol;
+	public void setIdRol(Integer idRol) {
+		this.idRol = idRol;
 	}
 
-	public String getCorreo_electronico() {
-		return correo_electronico;
+	public Long getNo_usuario() {
+		return no_usuario;
 	}
-	
-//3.-toString
+	//3.-toString
 	@Override
 	public String toString() {
 		return "Usuarios [no_usuario=" + no_usuario + ", nombre=" + nombre + ", telefono=" + telefono
-				+ ", correo_electronico=" + correo_electronico + ", password_usuario=" + password_usuario
-				+ ", roles_id_rol=" + roles_id_rol + "]";
-	}//toString
+				+ ", correo=" + correo + ", password_usuario=" + password_usuario
+				+ ", idRol=" + idRol + "]";
+	}
+	
+	
+		
+
 }//class Usuarios
