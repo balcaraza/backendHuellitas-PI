@@ -3,99 +3,82 @@ package com.huellitas.huellitas.service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.huellitas.huellitas.model.ProductosModel;
+import com.huellitas.huellitas.repository.ProductRepository;
 
 @Service
 public class ProductService {
-	public final ArrayList<ProductosModel> list=  new ArrayList<ProductosModel>();
+	public final ProductRepository productRepository;
 	
-	public ProductService ()
-	{
+	@Autowired
+	public ProductService (ProductRepository productRepository){
+		this.productRepository= productRepository;
 	
-		list.add(new ProductosModel( "RopaMinie.jpg","RopaMinie" ,"Ropa para mascota, disney minnie mouse, camisa textil, rosa y grande" , 145.80));
-		list.add(new ProductosModel( "dssd.jpg","Ropa" ,"Ropa para mascota, disney minnie mouse" , 125.80));
-		list.add(new ProductosModel( "Peluche dinosaurio.jpg","aghdjdhd" ,"Ropa para mascota, disney minnie mouse, camisa textil, rosa y grande" , 15.80));
+	}
+	
+	public List<ProductosModel> getAllProducts() {
+		// TODO Auto-generated method stub
+		return productRepository.findAll();
 	}
 
-	public ArrayList<ProductosModel> getAllProducts() {
-		return list;//devuelve la lista de productos
+	public ProductosModel getProduct(Long prodId) {
+		return productRepository.findById(prodId).orElseThrow(
+				()-> new IllegalArgumentException("El producto con el id ["
+						+ prodId+"]no esta contemplado en nuestra base de datos"));
 	}
-
-	public ProductosModel getProduct(int prodId) {
-		ProductosModel productoTemporal= null;
-		for(ProductosModel product:list) {
-			if(product.getId_producto()==prodId) {
-				productoTemporal = product;
-				break;		
-			}
-		}
-		return productoTemporal;
-	}
+	
 	//Si tu no tienes constructor vacio jamas funcionara, y si escribes Productsmolds menos lo hara
 	public ProductosModel addProductModel(ProductosModel productosModel) {
-		ProductosModel productoTemporal =null;
-		if (list.add(productosModel)) {
-			productoTemporal=productosModel;
+		Optional<ProductosModel> tmpproduct= productRepository.findByNombreProducto(productosModel.getNombreProducto());
+		if(tmpproduct.isEmpty()) {
+			return productRepository.save(productosModel);
+		}else {
+			System.out.println("El producto ["
+					+ productosModel.getNombreProducto()+"] ya existe en nuestra base de datos");
+			return null;
 		}
-		return null;
 	}
 
-	public ProductosModel deleteProduct(int prodId) {
+	public ProductosModel deleteProduct(Long prodId) {
 		ProductosModel productoTemporal=null;
-		for(ProductosModel product:list) {
-			if(product.getId_producto()==prodId) {
-				productoTemporal=product;
-				list.remove(product);//borra el producto de la lista;
-				break;
-			}
+		if(productRepository.existsById(prodId)) {
+			productoTemporal= productRepository.findById(prodId).get();//trae el producto
+			productRepository.deleteById(Long.valueOf(prodId));
 		}
-		return null;
-	}
-
-
-
-	/*
-	 //pediente en revision por error 500 de servidor, error de petic
-	  public ProductosModel updateProductModel(int prodId, String imagen, String nombre_producto, String descripcion,
-			Double precio) {
-		// TODO Auto-generated method stub
-		ProductosModel productoTemporal=null;
-			for(ProductosModel product:list) {
-				if(product.getId_producto()==prodId) {
-					if(imagen.length()!=0) product.setImagen(imagen);
-					if(nombre_producto.length()!=0) product.setDescripcion(descripcion);
-					if(descripcion.length()!=0)product.setDescripcion(descripcion);
-					if(precio.doubleValue()>0) product.setPrecio(precio);
-					productoTemporal = product;
-					break;
-				}
-			}
 		return productoTemporal;
-	}*/
+	}
 
 
-	public ProductosModel updateProductModel(int prodId, String imagen, String nombre_producto, String descripcion,
+
+	public ProductosModel updateProductModel(Long prodId, String imagen, String nombre_producto, String descripcion,
 			Double precio) {
 		// TODO Auto-generated method stub
-			ProductosModel productM=null;
-			for (ProductosModel product:list) {
-				if(product.getId_producto()==prodId) {
-					if(imagen!=null)product.setImagen(imagen);
-					if(nombre_producto!=null)product.setNombre_producto(nombre_producto);
-					if(descripcion!=null)product.setDescripcion(descripcion);
-					if(precio!=null)product.setPrecio(precio);
-					productM=product;
-					break;
+			ProductosModel product=null;
+			
+				if(productRepository.existsById(prodId)) {
+					product=productRepository.findById(prodId).get();
+					if(imagen.length()!=0)product.setImagen(imagen);
+					if(nombre_producto.length()!=0)product.setNombreProducto(descripcion);
+					if(descripcion.length()!=0)product.setDescripcion(descripcion);
+					if(precio.doubleValue()>0)product.setPrecio(precio);//<-revisa este en el product model
+					productRepository.save(product);
+					
 					
 				}
-			}
 			
-		return productM;
+			
+		return product;
 	}
+
+
+
 	
 }
