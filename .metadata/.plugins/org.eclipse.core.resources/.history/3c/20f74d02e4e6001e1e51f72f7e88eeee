@@ -1,0 +1,35 @@
+package com.huellitas.huellitas.model;
+
+public class DetalleEnvio {
+	private int id_detalle_compra;
+	private String nombre_completo;
+	private String calle;
+	private String municipio;
+	private String estado;
+	private String codigo_postal;
+	private String num_int_ext;
+	private String telefono;
+	private String instrucciones;
+	private static int total = 0;
+	public DetalleEnvio(int id_detalle_compra, String nombre_completo, String calle, String municipio, String estado,
+			String codigo_postal, String num_int_ext, String telefono, String instrucciones) {
+		super();
+		DetalleEnvio.total++;
+		id_detalle_compra = DetalleEnvio.total;
+		this.nombre_completo = nombre_completo;
+		this.calle = calle;
+		this.municipio = municipio;
+		this.estado = estado;
+		this.codigo_postal = codigo_postal;
+		this.num_int_ext = num_int_ext;
+		this.telefono = telefono;
+		this.instrucciones = instrucciones;
+	}
+	public DetalleEnvio() {
+		DetalleEnvio.total++;
+		id_detalle_compra = DetalleEnvio.total;
+	}
+
+	
+
+}
