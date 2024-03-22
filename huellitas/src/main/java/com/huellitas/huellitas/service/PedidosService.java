@@ -1,68 +1,55 @@
 package com.huellitas.huellitas.service;
 
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import com.huellitas.huellitas.model.Pedidos;
+import com.huellitas.huellitas.repository.PedidosRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PedidosService {
-	public final ArrayList<Pedidos> list = new ArrayList<Pedidos>();
+	public final PedidosRepository pedidosRepository;
 
-	public PedidosService() {
-		list.add( new Pedidos("11123", "enviado", 1));
-		list.add( new Pedidos("030124", " en proceso", 2));
+	@Autowired
+	public PedidosService(PedidosRepository pedidosRepository) {
+		this.pedidosRepository = pedidosRepository;
 	}
 	
-	public ArrayList<Pedidos> getAllPedidos() {
-		return list;
+	public List<Pedidos> getAllPedidos() {
+		return pedidosRepository.findAll();
 	}
 
-	
-	public Pedidos getPedido(int id_pedido) {
-		Pedidos tmpPedido = null;
-		for (Pedidos pedidos : list) {
-			if (pedidos.getId_pedido()==id_pedido) {
-				tmpPedido = pedidos;
-				break;
-			}
-		}
-		return tmpPedido;
+	public Pedidos getPedido(Long id_pedido) {
+		return pedidosRepository.findById(id_pedido).orElseThrow(
+				()-> new IllegalArgumentException("No existe un pedido con id "+ id_pedido));
 	}
 
 	public Pedidos addPedido(Pedidos pedidos) {
-		Pedidos tmpPedido = null;
-		if (list.add(pedidos)) {
-			tmpPedido=pedidos;
-		}
-		return tmpPedido;
+			return pedidosRepository.save(pedidos);
 	}
 
-	public Pedidos deletePedido(int id_pedido) {
+	public Pedidos deletePedido(Long id_pedido) {
 		Pedidos tmpPedido = null;		
-		for (Pedidos pedidos : list) {
-			if (pedidos.getId_pedido()==id_pedido) {
-				tmpPedido = pedidos;
-				list.remove(pedidos);
-				break;
-			}
+		if(pedidosRepository.existsById(id_pedido)) {
+			tmpPedido = pedidosRepository.findById(Long.valueOf(id_pedido)).get();
+			pedidosRepository.deleteById(Long.valueOf(id_pedido));
 		}
-		return tmpPedido;
-	}
-
-	public Pedidos updatePedido(int id_pedido, String fechaPedido, String status, Integer usuarios_no_usuario) {
-		Pedidos tmpPedido = null;	
-		for (Pedidos pedidos : list) {
-			if (pedidos.getId_pedido()==id_pedido) {
-				if (fechaPedido.length()!=0) pedidos.setFechaPedido(fechaPedido);
-				if (status.length()!=0) pedidos.setStatus(status);
-				if (usuarios_no_usuario.intValue()<=0) pedidos.setUsuarios_no_usuario(usuarios_no_usuario);
-				tmpPedido = pedidos;
-				break;
-			}
-		}
-		return tmpPedido;
+	return tmpPedido;
 	}
 	
-	
+	public Pedidos updatePedido(Long id_pedido, String fechaPedido, String status, Integer usuarios_no_usuario) {
+	Pedidos pedidos = null;
+	if(pedidosRepository.existsById(id_pedido)) {
+		pedidos = pedidosRepository.findById(id_pedido).get();
+			if (fechaPedido.length()!=0) pedidos.setFechaPedido(fechaPedido);
+			if (status.length()!=0) pedidos.setStatus(status);
+			if (usuarios_no_usuario!= null) pedidos.setUsuarios_no_usuario(usuarios_no_usuario);
+			pedidosRepository.save(pedidos);
+	}//exists
+	return pedidos;
+}//updateUser
 
 }//PedidosService

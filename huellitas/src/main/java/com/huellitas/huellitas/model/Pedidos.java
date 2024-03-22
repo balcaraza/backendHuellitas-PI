@@ -1,26 +1,35 @@
 package com.huellitas.huellitas.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table (name="pedidos")
 public class Pedidos {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(unique=true, nullable=false)
+	private Long id_pedido;
+	@Column(nullable=false)
 	private String fechaPedido; //adorno
+	@Column(nullable=false)
 	private String status;
+	@Column(nullable=false)
 	private int usuarios_no_usuario; // relación
-	private int id_pedido;
-	private static int total = 0;
 	//Constructores
 	public Pedidos(String fechaPedido, String status, int usuarios_no_usuario) {
 		super();
 		this.fechaPedido = fechaPedido;
 		this.status = status;
 		this.usuarios_no_usuario = usuarios_no_usuario;
-		Pedidos.total++;
-		id_pedido = Pedidos.total;
 	}
-	public Pedidos() {
-		Pedidos.total++;
-		id_pedido = Pedidos.total;
-	}
+	public Pedidos() {}
 	//Getters y Setters
-	public int getId_pedido() {
+	public Long getId_pedido() {
 		return id_pedido;
 	}
 	public String getFechaPedido() {
@@ -41,18 +50,10 @@ public class Pedidos {
 	public void setUsuarios_no_usuario(int usuarios_no_usuario) {
 		this.usuarios_no_usuario = usuarios_no_usuario;
 	}
-	public static int getTotal() {
-		return total;
-	}
-	public static void setTotal(int total) {
-		Pedidos.total = total;
-	}
 	//toString
 	@Override
 	public String toString() {
 		return "Pedidos [id_pedido=" + id_pedido + ", fechaPedido=" + fechaPedido + ", status=" + status
 				+ ", usuarios_no_usuario=" + usuarios_no_usuario + "]";
 	}
-
-	
 }

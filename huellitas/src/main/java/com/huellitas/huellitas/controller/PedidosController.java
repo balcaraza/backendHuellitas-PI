@@ -1,6 +1,6 @@
 package com.huellitas.huellitas.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.huellitas.huellitas.model.Pedidos;
 import com.huellitas.huellitas.service.PedidosService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path="/api/pedidos")
+@RequestMapping(path="/api/pedidos/")
 
 public class PedidosController {
 	private final PedidosService pedidosService;
@@ -27,12 +27,12 @@ public class PedidosController {
 	}
 	
 	@GetMapping
-	public ArrayList<Pedidos> getPedidos() {
+	public List<Pedidos> getPedidos() {
 		return pedidosService.getAllPedidos();
 	}
 	
-	@GetMapping (path="id_pedido")
-	public Pedidos getPedido (@PathVariable("id_pedido") int id_pedido) {
+	@GetMapping (path="{id_pedido}")
+	public Pedidos getPedido (@PathVariable("id_pedido") Long id_pedido) {
 		return pedidosService.getPedido(id_pedido);
 	}
 	
@@ -41,17 +41,15 @@ public class PedidosController {
 		return pedidosService.addPedido(pedidos);
 	}
 
-
 	@DeleteMapping (path="{id_pedido}")
-	public Pedidos deletePedido (@PathVariable("id_pedido") int id_pedido) {
+	public Pedidos deletePedido (@PathVariable("id_pedido") Long id_pedido) {
 		return pedidosService.deletePedido(id_pedido);
 	}
 
 	@PutMapping(path="{id_pedido}")//http://localhost:8080/api/pedidos/()
-	public Pedidos updatePedido(@PathVariable("id_pedido")int id_pedido, 
+	public Pedidos updatePedido(@PathVariable("id_pedido")Long id_pedido, 
 			@RequestBody Pedidos pedidos) {
 		return pedidosService.updatePedido(id_pedido, pedidos.getFechaPedido(),pedidos.getStatus(), pedidos.getUsuarios_no_usuario());
-	}//updateProduct
+	}
 
-	
 }//PedidosController
