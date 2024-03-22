@@ -1,6 +1,7 @@
 package com.huellitas.huellitas.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.huellitas.huellitas.model.ProductosModel;
 import com.huellitas.huellitas.service.ProductService;
 
-@RestController
+@RestController//controlador
 @RequestMapping(path="/api/products/")
 public class productosController {
 	
@@ -24,17 +25,18 @@ public class productosController {
 
 	@Autowired
 	public productosController(ProductService productService) {
-		this.productService= productService;//instancia de la clase. 
+		this.productService= productService;
+		// TODO Auto-generated constructor stub
 	}
 	
 	@GetMapping
-	public ArrayList<ProductosModel> getProduct(){
+	public List<ProductosModel> getProduct(){
 		return productService.getAllProducts();
 		
 	}
 	
 	@GetMapping (path = "prodId")
-	public ProductosModel getProduct(@PathVariable("prodId")int prodId) {
+	public ProductosModel getProduct(@PathVariable("prodId")Long prodId) {
 		return productService.getProduct(prodId);
 	}
 	
@@ -45,30 +47,16 @@ public class productosController {
 	
 	//Dell
 	@DeleteMapping(path = "{prodId}")
-	public ProductosModel deleteProduct(@PathVariable("prodId")int prodId) {
+	public ProductosModel deleteProduct(@PathVariable("prodId")Long prodId) {
 		return productService.deleteProduct(prodId);
 	}
 	
-	/*@PutMapping(path = "{prodId}")
-	public ProductosModel updateProductModel(@PathVariable("{prodId}" )int prodId,
-			@RequestBody ProductosModel productosModel) {
-		
-		return productService.updateProductModel(prodId, 
-				productosModel.getImagen(),
-				productosModel.getNombre_producto(),
-				productosModel.getDescripcion(),
-				Double.valueOf(productosModel.getPrecio()));
-		
-	}*/
-	
-	//por parametro
 	@PutMapping(path = "{prodId}")
-	public ProductosModel updateProductModel(@PathVariable("prodId")int prodId,
-		@RequestParam (required = false) String imagen,
-		@RequestParam (required = false) String nombre_producto,
-		@RequestParam (required = false)String descripcion, 
-		@RequestParam (required = false) Double precio) {
-		return productService.updateProductModel(prodId, imagen,nombre_producto, descripcion, precio);
+	public ProductosModel updateProductModel(@PathVariable ("prodId") Long prodId,
+			@RequestBody ProductosModel product) {
+		return productService. updateProductModel(prodId, product.getImagen(),
+				product.getNombreProducto(),product.getDescripcion(),
+				Double.valueOf(product.getPrecio()));
 	}
 	
 	
