@@ -16,7 +16,7 @@ import com.huellitas.huellitas.model.Roles;
 import com.huellitas.huellitas.service.RolesService;
 
 @RestController
-@RequestMapping ("/api/roles/")
+@RequestMapping (path="/api/roles/")
 public class RolesController {
 	private final RolesService rolesService;
 	@Autowired

@@ -25,7 +25,7 @@ public class RolesService {
 	}
 
 	public Roles addRol(Roles roles) {
-		Optional<Roles> temp = rolesRepository.findByTipoRol(roles.getTipo_rol());
+		Optional<Roles> temp = rolesRepository.findByTipo_rol(roles.getTipo_rol());
 		if (temp.isEmpty()) {
 			return rolesRepository.save(roles);
 		}else {
@@ -33,7 +33,7 @@ public class RolesService {
 					roles.getTipo_rol()+ "]");
 			return null;
 		} //if
-	}//addProduct
+	}
 
 
 	public Roles deleteRol(Long id_rol) {
