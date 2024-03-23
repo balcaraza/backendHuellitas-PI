@@ -1,48 +1,62 @@
 package com.huellitas.huellitas.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="detalle_tarjeta")
 public class DetalleTarjeta {
-	private int id_pago;
-	private String nombre_tarjeta;
-	private String no_tarjeta;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_pago", unique=true, nullable=false)
+	private Long idPago;
+	@Column(nullable=false, name="nombreTarjeta")
+	private String nombreTarjeta;
+	@Column(nullable=false, name="no_tarjeta")
+	private String numeroTarjeta;
+	@Column(nullable=false)
 	private int mes;
+	@Column(nullable=false)
 	private int anio;
+	@Column(nullable=false)
 	private String codigo_seguridad;
-	private static int total = 0;
 	
-	public DetalleTarjeta(String nombre_tarjeta, String no_tarjeta, int mes, int anio,
+	public DetalleTarjeta(String nombreTarjeta, String numeroTarjeta, int mes, int anio,
 			String codigo_seguridad) {
 		super();
-		DetalleTarjeta.total++;
-		id_pago = DetalleTarjeta.total;
-		this.nombre_tarjeta = nombre_tarjeta;
-		this.no_tarjeta = no_tarjeta;
+		this.nombreTarjeta = nombreTarjeta;
+		this.numeroTarjeta = numeroTarjeta;
 		this.mes = mes;
 		this.anio = anio;
 		this.codigo_seguridad = codigo_seguridad;
 	}
 
 	public DetalleTarjeta() {
-		DetalleTarjeta.total++;
-		id_pago = DetalleTarjeta.total;
+	
 	}
-//getters y setters
-	public int getId_pago() {
-		return id_pago;
+	
+	//getters y setters
+	public Long getId_pago() {
+		return idPago;
 	}
 	public String getNombre_tarjeta() {
-		return nombre_tarjeta;
+		return nombreTarjeta;
 	}
 
-	public void setNombre_tarjeta(String nombre_tarjeta) {
-		this.nombre_tarjeta = nombre_tarjeta;
+	public void setNombre_tarjeta(String nombreTarjeta) {
+		this.nombreTarjeta = nombreTarjeta;
 	}
 
 	public String getNo_tarjeta() {
-		return no_tarjeta;
+		return numeroTarjeta;
 	}
 
-	public void setNo_tarjeta(String no_tarjeta) {
-		this.no_tarjeta = no_tarjeta;
+	public void setNo_tarjeta(String numeroTarjeta) {
+		this.numeroTarjeta = numeroTarjeta;
 	}
 
 	public int getMes() {
@@ -69,20 +83,10 @@ public class DetalleTarjeta {
 		this.codigo_seguridad = codigo_seguridad;
 	}
 
-	public static int getTotal() {
-		return total;
-	}
-
-	public static void setTotal(int total) {
-		DetalleTarjeta.total = total;
-	}
-//toString
+	//toString
 	@Override
 	public String toString() {
-		return "DetalleTarjeta [id_pago=" + id_pago + ", nombre_tarjeta=" + nombre_tarjeta + ", no_tarjeta="
-				+ no_tarjeta + ", mes=" + mes + ", anio=" + anio + ", codigo_seguridad=" + codigo_seguridad + "]";
-	}
-
-	
-	
+		return "DetalleTarjeta [idPago=" + idPago + ", nombreTarjeta=" + nombreTarjeta + ", numeroTarjeta="
+				+ numeroTarjeta + ", mes=" + mes + ", anio=" + anio + ", codigo_seguridad=" + codigo_seguridad + "]";
+	}	
 }

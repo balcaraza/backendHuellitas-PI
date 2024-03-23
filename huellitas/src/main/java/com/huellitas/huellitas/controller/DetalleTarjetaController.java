@@ -1,6 +1,7 @@
 package com.huellitas.huellitas.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,7 +31,7 @@ public class DetalleTarjetaController {
 	
 	//Get
 	@GetMapping
-	public ArrayList<DetalleTarjeta> getDetalleTarjetas(){
+	public List<DetalleTarjeta> getDetalleTarjetas(){
 		return detalleTarjetaService.getAllDetalleTarjetas();
 	}//getDetalleTarjetas
 	
@@ -47,7 +48,7 @@ public class DetalleTarjetaController {
 	
 	//Put
 	@PutMapping(path="{tarjetaId}")
-	public DetalleTarjeta updateDetalleTarjeta(@PathVariable("tarjetaId") int tarjetaId, 
+	public DetalleTarjeta updateDetalleTarjeta(@PathVariable("tarjetaId") Long tarjetaId, 
 			@RequestBody DetalleTarjeta detalleTarjeta) {
 		return detalleTarjetaService.updateDetalleTarjeta(tarjetaId, detalleTarjeta.getNombre_tarjeta(),
 				detalleTarjeta.getNo_tarjeta(), detalleTarjeta.getMes(), detalleTarjeta.getAnio(),
@@ -56,7 +57,7 @@ public class DetalleTarjetaController {
 	
 	//Delete
 	@DeleteMapping(path="{tarjetaId}")
-	public DetalleTarjeta deleteDetalleTarjeta(@PathVariable("tarjetaId") int tarjetaId) {
+	public DetalleTarjeta deleteDetalleTarjeta(@PathVariable("tarjetaId") Long tarjetaId) {
 		return detalleTarjetaService.deleteDetalleTarjeta(tarjetaId);
 	}
 	
