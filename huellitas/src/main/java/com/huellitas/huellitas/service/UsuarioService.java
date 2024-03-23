@@ -1,71 +1,72 @@
 package com.huellitas.huellitas.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.huellitas.huellitas.dto.ChangePassword;
 import com.huellitas.huellitas.model.Usuarios;
+import com.huellitas.huellitas.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-	public final ArrayList<Usuarios> list = new ArrayList<Usuarios>();
+	public final UsuarioRepository usuarioRepository;
 
-	public UsuarioService() {
-		list.add(new Usuarios("Balam Balcaraza", "5588062943", "balcaraza@gmail.com", "Huellitas_123", 1));
-		list.add(new Usuarios("Monserrat Cervantes", "3331777101", "dianaranda2408@gmail.com", "Huellitas_123", 1));
+	@Autowired
+	public UsuarioService(UsuarioRepository usuarioRepository) {
+		this.usuarioRepository = usuarioRepository;
 	}// constructor
 
-	public ArrayList<Usuarios> getAllUsuarios() {
-		return list;
-	}//getAllUsuarios
+	// Métodos de GET
+	public List<Usuarios> getAllUsuarios() {
+		return usuarioRepository.findAll();
+	}// getAllUsuarios
 
-	public Usuarios getUsuario(int usuaId) {
+	public Usuarios getUsuario(Long usuaId) {
+		return usuarioRepository.findById(usuaId)
+				.orElseThrow(() -> new IllegalArgumentException("El usuario con el id [" + usuaId + "] no existe "));
+	}// getUsuario
+
+	// Método para DELETE
+	public Usuarios deleteUsuario(Long usuaId) {
 		Usuarios tmpUser = null;
-		for (Usuarios usuario : list) {
-			if (usuario.getNo_usuario() == usuaId) {
-				tmpUser = usuario;
-				break;
-			}//if ==
-		}//forEach
+		if (usuarioRepository.existsById(usuaId)) {
+			tmpUser = usuarioRepository.findById(usuaId).get();
+			usuarioRepository.deleteById(usuaId);
+		} // if exist
 		return tmpUser;
-	}//getProduct
+	}// deleteUsuario
 
+	// Método para POST
 	public Usuarios addUsuario(Usuarios usuario) {
 		Usuarios tmpUser = null;
-		if (list.add(usuario)) {
-			tmpUser= usuario;
-		}//if
-		return tmpUser;
-	}//addUsuario
-
-	public Usuarios deleteUsuario(int usuaId) {
-		Usuarios tmpUser = null;
-		for (Usuarios usuario : list) {
-			if (usuario.getNo_usuario() == usuaId) {
-				tmpUser = usuario;
-				list.remove(usuario);//borra el producto en la lista
-				break;
-			}//if ==
-		}//forEach
-		return tmpUser;
-	}//deleteUsuario
-
-	public Usuarios updateUsuario(int usuaId, String nombre, String telefono, String correo_electronico,
-			String password_usuario, Integer roles_id_rol) {
-		Usuarios tmpUser =null;
-		for (Usuarios usuario : list) {
-			if (usuario.getNo_usuario() == usuaId) {
-				if(nombre.length()!=0) usuario.setNombre(nombre);
-				if(telefono.length()!=0) usuario.setTelefono(telefono);
-				if(correo_electronico.length()!=0) usuario.getCorreo_electronico();
-				if(password_usuario.length()!=0) usuario.setPassword_usuario(password_usuario);
-				if(roles_id_rol.intValue()>0) usuario.setRoles_id_rol(roles_id_rol);
-				tmpUser = usuario;
-				break;
-			}//if ==
+		if (usuarioRepository.findByCorreo(usuario.getCorreo()).isEmpty()) {
+			tmpUser = usuarioRepository.save(usuario);
+		} else {
+			System.out.println("El usuario con este email [" + usuario.getCorreo() + "] ya esta registrado");
 		}
 		return tmpUser;
+	}// addUsuario
+	
+	//Método para PUT
+		public Usuarios updateUsuario(Long usuaId, ChangePassword changePassword) {
+		Usuarios tmpUser =null;
+		if (usuarioRepository.existsById(usuaId)) {
+			tmpUser=usuarioRepository.findById(usuaId).get();
+			if(changePassword.getPassword().length()!=0) {
+			if (tmpUser.getPassword_usuario().equals(changePassword.getPassword())) {
+				tmpUser.setPassword_usuario(changePassword.getNpassword());
+			}else {
+				System.out.println("update -El Password del usuario["+
+						tmpUser.getNo_usuario()+ "] no coincide");
+				if(changePassword.getNombre().length()!=0) tmpUser.setNombre(changePassword.getNombre());;
+				if(changePassword.getTelefono().length()!=0) tmpUser.setTelefono(changePassword.getTelefono());
+			}}//if else equals
+			if(changePassword.getNombre().length()!=0) tmpUser.setNombre(changePassword.getNombre());;
+			if(changePassword.getTelefono().length()!=0) tmpUser.setTelefono(changePassword.getTelefono());
+			usuarioRepository.save(tmpUser);
+		}//if exist
+		return tmpUser;
 	}//updateUsuario
-
-
 }//class UsuarioService

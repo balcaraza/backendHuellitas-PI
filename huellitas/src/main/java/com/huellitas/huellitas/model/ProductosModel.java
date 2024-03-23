@@ -1,69 +1,86 @@
 package com.huellitas.huellitas.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity//define entidad
+@Table(name="productos")//nombre tabla
 public class ProductosModel {
-	private int id_producto;
+	@Id//define como un id en la tabla
+	@GeneratedValue (strategy = GenerationType.IDENTITY)///unico y autoincremental
+	@Column (name="id", unique = true, nullable = false )
+	private Long id_producto;//<-es un long
+	@Column(nullable = false )
 	private String imagen;
-	private String nombre_producto;
+	@Column(nullable = false )
+	private String nombreProducto;
+	@Column(nullable = false )
 	private String descripcion;
+	@Column(nullable = false )
 	private double precio;
-	private static int total =0;
-	//contructor
-	public ProductosModel(String imagen, String nombre_producto, String descripcion, double precio) {
+	//private static int total =0;
+	//constructor
+	public ProductosModel(String imagen, String nombreProducto, String descripcion, double precio) {
 		super();
-		
 		this.imagen = imagen;
-		this.nombre_producto = nombre_producto;
+		this.nombreProducto = nombreProducto;
 		this.descripcion = descripcion;
 		this.precio = precio;
-		ProductosModel.total++;
-		id_producto=ProductosModel.total;
-	}
-	//constructor vacio
-	public ProductosModel() {
-		ProductosModel.total++;
-		id_producto=ProductosModel.total;
-	}
-	//getters y setters
-	public int getId_producto() {
-		return id_producto;
 	}
 	
+	//constructor vacio
+	public ProductosModel() {
+
+	}
+
 	public String getImagen() {
 		return imagen;
 	}
+
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	public String getNombre_producto() {
-		return nombre_producto;
+
+	public String getNombreProducto() {
+		return nombreProducto;
 	}
-	public void setNombre_producto(String nombre_producto) {
-		this.nombre_producto = nombre_producto;
+
+	public void setNombreProducto(String nombreProducto) {
+		this.nombreProducto = nombreProducto;
 	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
+
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
 	public double getPrecio() {
 		return precio;
 	}
+
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-	public static int getTotal() {
-		return total;
+
+	public Long getId_producto() {
+		return id_producto;
 	}
-	public static void setTotal(int total) {
-		ProductosModel.total = total;
+
+	@Override
+	public String toString() {
+		return "ProductosModel [id_producto=" + id_producto + ", imagen=" + imagen + ", nombreProducto="
+				+ nombreProducto + ", descripcion=" + descripcion + ", precio=" + precio + "]";
 	}
 	
-	//to string
-		@Override
-		public String toString() {
-			return "ProductosModel [id_producto=" + id_producto + ", imagen=" + imagen + ", nombre_producto="
-					+ nombre_producto + ", descripcion=" + descripcion + ", precio=" + precio + "]";
-		}
 	
-}
+	
+	
+
+	}
