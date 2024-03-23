@@ -1,6 +1,7 @@
 package com.huellitas.huellitas.model;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +13,7 @@ import javax.persistence.Table;
 public class DetalleEnvio {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="id_detalle_compra", unique=true, nullable=false)
+	@Column(name="id_detalle_envio", unique=true, nullable=false)
 	private Long detalleEnvioId;
 	@Column(nullable=false)
 	private String nombre_completo;
