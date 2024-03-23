@@ -1,9 +1,8 @@
 package com.huellitas.huellitas.controller;
 import com.huellitas.huellitas.model.DetalleEnvio;
+
  
-import java.util.ArrayList;
-
-
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,13 +27,13 @@ public class DetalleEnvioController {
 	}//constructor
 	//GET
 		@GetMapping
-		public ArrayList<DetalleEnvio> getDetalleEnvios(){  
-			return detalleEnvioService.getAllDetalleEnvios();
+		public List<DetalleEnvio> getDetallesEnvios(){  
+			return detalleEnvioService.getAllDetallesEnvios();
 			}//getdetalleEnvios
 		
 	//GET
 		@GetMapping(path="{detEnvId}")//http://localhost:8080/api/DetalleEnvio/1
-		public DetalleEnvio getDetalleEnvio(@PathVariable("detEnvId") int detEnvId) {
+		public DetalleEnvio getDetalleEnvio(@PathVariable("detEnvId") Long detEnvId) {
 			return detalleEnvioService.getDetalleEnvio(detEnvId); 
 		}//getdetalleEnvio
 		
@@ -46,13 +45,13 @@ public class DetalleEnvioController {
 		
 		//DELETE
 		@DeleteMapping(path="{detEnvId}")//http://localhost:8080/api/DetalleEnvio/1
-		public DetalleEnvio deleteDetalleEnvio(@PathVariable("detEnvId") int detEnvId) {
+		public DetalleEnvio deleteDetalleEnvio(@PathVariable("detEnvId") Long detEnvId) {
 			return detalleEnvioService.deleteDetalleEnvio(detEnvId); 
 		}//getdetalleEnvio
 		
 		//PUT
 		@PutMapping(path="{detEnvId}")
-		public DetalleEnvio updateDetalleEnvio(@PathVariable("detEnvId") int detEnvId,
+		public DetalleEnvio updateDetalleEnvio(@PathVariable("detEnvId") Long detEnvId,
 				@RequestParam (required=false)String nombre_completo,
 				@RequestParam (required=false)String calle,
 				@RequestParam (required=false)String municipio,

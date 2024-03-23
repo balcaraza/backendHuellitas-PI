@@ -1,22 +1,45 @@
 package com.huellitas.huellitas.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="detalle_envio")
 public class DetalleEnvio {
-	private int id_detalle_compra;
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="id_detalle_compra", unique=true, nullable=false)
+	private Long detalleEnvioId;
+	@Column(nullable=false)
 	private String nombre_completo;
+	@Column(nullable=false)
 	private String calle;
+	@Column(nullable=false)
 	private String municipio;
+	@Column(nullable=false)
 	private String estado;
+	@Column(nullable=false)
 	private String codigo_postal;
+	@Column(nullable=false)
 	private String num_int_ext;
+	@Column(nullable=false)
 	private String telefono;
 	private String instrucciones;
-	private static int total = 0;
+	@Column(nullable=false)
+	private Long pedido_id_pedido;
+	@Column(nullable=false)
+	private Long usuarios_no_usuario;
+	@Column(nullable=false)
+	private int usuarios_roles_id_rol;
+	
 	//constructor
 	public DetalleEnvio( String nombre_completo, String calle, String municipio, String estado,
 			String codigo_postal, String num_int_ext, String telefono, String instrucciones) {
 		super();
-		DetalleEnvio.total++;
-		id_detalle_compra = DetalleEnvio.total;
 		this.nombre_completo = nombre_completo;
 		this.calle = calle;
 		this.municipio = municipio;
@@ -27,12 +50,10 @@ public class DetalleEnvio {
 		this.instrucciones = instrucciones;
 	}//constructor
 	public DetalleEnvio() {
-		DetalleEnvio.total++;
-		id_detalle_compra = DetalleEnvio.total;
 	}//constructor
 	//getters y setters
-	public int getId_detalle_compra() {
-		return id_detalle_compra;
+	public Long getDetalleEnvioId() {
+		return detalleEnvioId;
 	}//getId_detalle_compra
 	public String getNombre_completo() {
 		return nombre_completo;
@@ -82,21 +103,23 @@ public class DetalleEnvio {
 	public void setInstrucciones(String instrucciones) {
 		this.instrucciones = instrucciones;
 	}// setInstrucciones
-	public static int getTotal() {
-		return total;
-	}//getTotal
-	public static void setTotal(int total) {
-		DetalleEnvio.total = total;
-	}//setTotal
-	//toString
+
+	public Long getPedido_id_pedido() {
+		return pedido_id_pedido;
+	}//getPedido_id_pedido
+	public Long getUsuarios_no_usuario() {
+		return usuarios_no_usuario;
+	}//getPedidos_np_usuario
+	public int getUsuarios_roles_id_rol() {
+		return usuarios_roles_id_rol;
+	}//getUsuarios_roles_id_rol
 	@Override
 	public String toString() {
-		return "DetalleEnvio [id_detalle_compra=" + id_detalle_compra + ", nombre_completo=" + nombre_completo
+		return "DetalleEnvio [detalleEnvioId=" + detalleEnvioId + ", nombre_completo=" + nombre_completo
 				+ ", calle=" + calle + ", municipio=" + municipio + ", estado=" + estado + ", codigo_postal="
 				+ codigo_postal + ", num_int_ext=" + num_int_ext + ", telefono=" + telefono + ", instrucciones="
-				+ instrucciones + "]";
+				+ instrucciones + ", pedido_id_pedido=" + pedido_id_pedido + ", usuarios_no_usuario="
+				+ usuarios_no_usuario + ", usuarios_roles_id_rol=" + usuarios_roles_id_rol + "]";
 	}//toString
-
 	
-
 }//class DetalleEnvio
