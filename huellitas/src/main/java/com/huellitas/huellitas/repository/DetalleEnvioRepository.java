@@ -10,6 +10,6 @@ import com.huellitas.huellitas.model.DetalleEnvio;
 @Repository
 public interface DetalleEnvioRepository extends JpaRepository<DetalleEnvio, Long>{
 
-	Optional<DetalleEnvio> findByDetalleCompraId(Long detEnvId);
+	Optional<DetalleEnvio> findByDetalleEnvioId(Long detEnvId);
 
 }

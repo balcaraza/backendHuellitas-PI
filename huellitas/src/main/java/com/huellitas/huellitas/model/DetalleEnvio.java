@@ -31,8 +31,6 @@ public class DetalleEnvio {
 	private String telefono;
 	private String instrucciones;
 	@Column(nullable=false)
-	private Long pedido_id_pedido;
-	@Column(nullable=false)
 	private Long usuarios_no_usuario;
 	@Column(nullable=false)
 	private int usuarios_roles_id_rol;
@@ -105,9 +103,6 @@ public class DetalleEnvio {
 		this.instrucciones = instrucciones;
 	}// setInstrucciones
 
-	public Long getPedido_id_pedido() {
-		return pedido_id_pedido;
-	}//getPedido_id_pedido
 	public Long getUsuarios_no_usuario() {
 		return usuarios_no_usuario;
 	}//getPedidos_np_usuario
@@ -119,8 +114,8 @@ public class DetalleEnvio {
 		return "DetalleEnvio [detalleEnvioId=" + detalleEnvioId + ", nombre_completo=" + nombre_completo
 				+ ", calle=" + calle + ", municipio=" + municipio + ", estado=" + estado + ", codigo_postal="
 				+ codigo_postal + ", num_int_ext=" + num_int_ext + ", telefono=" + telefono + ", instrucciones="
-				+ instrucciones + ", pedido_id_pedido=" + pedido_id_pedido + ", usuarios_no_usuario="
-				+ usuarios_no_usuario + ", usuarios_roles_id_rol=" + usuarios_roles_id_rol + "]";
+				+ instrucciones + ", usuarios_no_usuario=" + usuarios_no_usuario + ", usuarios_roles_id_rol=" 
+				+ usuarios_roles_id_rol + "]";
 	}//toString
 	
 }//class DetalleEnvio
