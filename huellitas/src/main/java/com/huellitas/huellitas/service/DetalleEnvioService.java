@@ -1,62 +1,55 @@
 package com.huellitas.huellitas.service;
 
-import java.util.ArrayList;
+import java.util.List;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.huellitas.huellitas.model.DetalleEnvio;
+import com.huellitas.huellitas.repository.DetalleEnvioRepository;
 
 @Service
 public class DetalleEnvioService {
-	public final ArrayList<DetalleEnvio> list = new ArrayList<DetalleEnvio>();
 	
-	public DetalleEnvioService(){
-  		list.add(new DetalleEnvio("Amparo Sonia Garibay ortiz", "Gonzalez Ortega", "Tlajomjulco de Zuñiga", "Jalisco", "45650", "145A", "79605462", "Entregar frente la puerta de barrotes"));
-		list.add(new DetalleEnvio("Balam Alcaraz", "Nilo", "Azcapotzalco", "Ciudad de México", "02080", "117", "5588062943", "Zaguan negro"));
-		list.add(new DetalleEnvio("Juan Perez Cruz", "'Canal de la Sangría", "Tláhuac", "Ciudad de México", "13529", "041", "5575265435", "Zaguán negro al lado de una Papeleria"));
-		list.add(new DetalleEnvio("Fulanito Desconocido", "Sanchez Colín", "Ecatepec", "Estado de México", "55339", "22-44", "5633809918", "casa azul, zaguan rústico"));
-		list.add(new DetalleEnvio("Hugo Castaneda Hernandez", "Progreso", "Ecatepec", "Estado de México", "55270", "33-44", "5583429615", "casa negra"));
+	public final DetalleEnvioRepository detalleEnvioRepository;
 	
-		}//constructor	
+	@Autowired
+	public  DetalleEnvioService(DetalleEnvioRepository detalleEnvioRepository) {
+		this.detalleEnvioRepository=detalleEnvioRepository;
+		}//constructor
 
-	public  ArrayList<DetalleEnvio> getAllDetalleEnvios() {
-		return list;
+
+	public  List<DetalleEnvio> getAllDetallesEnvios() {
+		return detalleEnvioRepository.findAll();
 	}//getAllDetalleEnvio
 
-	public DetalleEnvio getDetalleEnvio(int detEnvId) {
-		DetalleEnvio tmpDetEnv=null;
-		for (DetalleEnvio detalleEnvio : list) {
-			if(detalleEnvio.getId_detalle_compra()==detEnvId) {
-				tmpDetEnv=detalleEnvio; 
-				break;				
-			}//if==
-		}//foreach		
-		return  tmpDetEnv;
+	public DetalleEnvio getDetalleEnvio(Long detEnvId) {
+		return detalleEnvioRepository.findById(detEnvId).orElseThrow(
+				()->new IllegalArgumentException("El detalle de envío con id ["+
+						detEnvId + "] no existe")
+				);
 	}//getDetalleEnvio
 
 	public  DetalleEnvio addDetalleEnvio(DetalleEnvio detalleEnvio) {
-		DetalleEnvio tmpDetEnv=null;
-		if(list.add(detalleEnvio)) {
-			tmpDetEnv=detalleEnvio;
-		}//if		
+		DetalleEnvio tmpDetEnv=null;	
+		tmpDetEnv = detalleEnvioRepository.save(detalleEnvio);
 		return tmpDetEnv;
 	}//addDetalleEnvio
 
-	public DetalleEnvio deleteDetalleEnvio(int detEnvId) {
+	public DetalleEnvio deleteDetalleEnvio(Long detEnvId) {
 		DetalleEnvio tmpDetEnv=null;
-		for (DetalleEnvio detalleEnvio : list) {
-			if(detalleEnvio.getId_detalle_compra()==detEnvId) {
-				tmpDetEnv=detalleEnvio; 
-				list.remove(detalleEnvio);
-				break;				
-			}//if==
-		}//foreach		
+		if(detalleEnvioRepository.existsById(detEnvId)) {
+			tmpDetEnv=detalleEnvioRepository.findById(detEnvId).get();
+			detalleEnvioRepository.deleteById(detEnvId);
+		}//if
 		return  tmpDetEnv;
 	}//deleteDetalleEnvio
 
-	public DetalleEnvio updateDetalleEnvio(int detEnvId, String nombre_completo, String calle, String municipio,
+	public DetalleEnvio updateDetalleEnvio(Long detEnvId, String nombre_completo, String calle, String municipio,
 			String estado, String codigo_postal, String num_int_ext, String telefono, String instrucciones) {
-		DetalleEnvio tmpDetEnv=null;
-		for (DetalleEnvio detalleEnvio : list) {
-			if(detalleEnvio.getId_detalle_compra()==detEnvId) {
+		DetalleEnvio detalleEnvio=null;
+		if(detalleEnvioRepository.existsById(detEnvId)) {
+			detalleEnvio=detalleEnvioRepository.findById(detEnvId).get();
 				if(nombre_completo!=null) detalleEnvio.setNombre_completo(nombre_completo);
 				if(calle!=null) detalleEnvio.setCalle(calle);
 				if(municipio!=null) detalleEnvio.setMunicipio(municipio);
@@ -64,12 +57,10 @@ public class DetalleEnvioService {
 				if(codigo_postal!=null) detalleEnvio.setCodigo_postal(codigo_postal);
 				if(num_int_ext!=null) detalleEnvio.setNum_int_ext(num_int_ext);
 				if(telefono!=null) detalleEnvio.setTelefono(telefono);
-				if(instrucciones!=null) detalleEnvio.setInstrucciones(instrucciones);
-				tmpDetEnv=detalleEnvio; 
-				break;				
-			}//if==
-		}//foreach		
-		return  tmpDetEnv;
+				if(instrucciones!=null) detalleEnvio.setInstrucciones(instrucciones);	
+				detalleEnvioRepository.save(detalleEnvio);
+		}//exist	
+		return  detalleEnvio;
 	}//updateDetalleEnvio
 	
 }//class DetalleEnvioService
