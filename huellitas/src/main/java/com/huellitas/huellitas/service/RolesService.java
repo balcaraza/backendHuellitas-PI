@@ -25,12 +25,12 @@ public class RolesService {
 	}
 
 	public Roles addRol(Roles roles) {
-		Optional<Roles> temp = rolesRepository.findByTipo_rol(roles.getTipo_rol());
+		Optional<Roles> temp = rolesRepository.findByTipoRol(roles.getTipoRol());
 		if (temp.isEmpty()) {
 			return rolesRepository.save(roles);
 		}else {
 			System.out.println("Ya existe el rol["+
-					roles.getTipo_rol()+ "]");
+					roles.getTipoRol()+ "]");
 			return null;
 		} //if
 	}
@@ -48,7 +48,7 @@ public class RolesService {
 		Roles roles = null;
 		if(rolesRepository.existsById(id_rol)) {
 			roles = rolesRepository.findById(id_rol).get();
-				if (tipo_rol.length()!=0) roles.setTipo_rol(tipo_rol);
+				if (tipo_rol.length()!=0) roles.setTipoRol(tipo_rol);
 				rolesRepository.save(roles);
 		}//exists
 		return roles;

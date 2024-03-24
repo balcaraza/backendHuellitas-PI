@@ -15,11 +15,11 @@ public class Roles {
 	@Column(unique=true, nullable=false)
 	 private Long id_rol;
 	@Column(nullable=false)
-	 private String tipo_rol;
+	 private String tipoRol;
 	 //constructores
-	public Roles(String tipo_rol) {
+	public Roles(String tipoRol) {
 		super();
-		this.tipo_rol = tipo_rol;
+		this.tipoRol = tipoRol;
 	}
 
 	public Roles() {}
@@ -27,16 +27,16 @@ public class Roles {
 	public Long getId_rol() {
 		return id_rol;
 	}
-	public String getTipo_rol() {
-		return tipo_rol;
+	public String getTipoRol() {
+		return tipoRol;
 	}
-	public void setTipo_rol(String tipo_rol) {
-		this.tipo_rol = tipo_rol;
+	public void setTipoRol(String tipoRol) {
+		this.tipoRol = tipoRol;
 	}
 	//toString
 	@Override
 	public String toString() {
-		return "Roles [tipo_rol=" + tipo_rol + ", id_rol=" + id_rol + "]";
+		return "Roles [tipoRol=" + tipoRol + ", id_rol=" + id_rol + "]";
 	}
 
 }

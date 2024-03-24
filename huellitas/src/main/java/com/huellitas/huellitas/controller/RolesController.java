@@ -42,7 +42,7 @@ public class RolesController {
 	@PutMapping (path="{id_rol}")
 	public Roles updateRol (@PathVariable ("id_rol")Long id_rol,
 			@RequestBody Roles roles) {
-		return rolesService.updateRol(id_rol, roles.getTipo_rol());
+		return rolesService.updateRol(id_rol, roles.getTipoRol());
 	}
 	
   }
