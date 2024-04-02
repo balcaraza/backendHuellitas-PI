@@ -40,6 +40,7 @@ public class RolesService {
 	public Roles deleteRol(Long id_rol) {
 		Roles temp = null;
 		if(rolesRepository.existsById(id_rol)) {
+			temp = rolesRepository.findById(id_rol).get();
 			rolesRepository.deleteById(Long.valueOf(id_rol));
 		}
 	return temp;

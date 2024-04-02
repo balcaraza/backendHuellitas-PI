@@ -44,14 +44,14 @@ public class DetalleEnvioService {
 		DetalleEnvio detalleEnvio=null;
 		if(detalleEnvioRepository.existsById(detEnvId)) {
 			detalleEnvio=detalleEnvioRepository.findById(detEnvId).get();
-				if(nombre_completo!=null) detalleEnvio.setNombre_completo(nombre_completo);
-				if(calle!=null) detalleEnvio.setCalle(calle);
-				if(municipio!=null) detalleEnvio.setMunicipio(municipio);
-				if(estado!=null) detalleEnvio.setEstado(estado);
-				if(codigo_postal!=null) detalleEnvio.setCodigo_postal(codigo_postal);
-				if(num_int_ext!=null) detalleEnvio.setNum_int_ext(num_int_ext);
-				if(telefono!=null) detalleEnvio.setTelefono(telefono);
-				if(instrucciones!=null) detalleEnvio.setInstrucciones(instrucciones);	
+			if(nombre_completo.length()!=0) detalleEnvio.setNombre_completo(nombre_completo);
+			if(calle.length()!=0) detalleEnvio.setCalle(calle);
+			if(municipio.length()!=0) detalleEnvio.setMunicipio(municipio);
+			if(estado.length()!=0) detalleEnvio.setEstado(estado);
+			if(codigo_postal.length()!=0) detalleEnvio.setCodigo_postal(codigo_postal);
+			if(num_int_ext.length()!=0) detalleEnvio.setNum_int_ext(num_int_ext);
+			if(telefono.length()!=0) detalleEnvio.setTelefono(telefono);
+			if(instrucciones.length()!=0) detalleEnvio.setInstrucciones(instrucciones);
 				detalleEnvioRepository.save(detalleEnvio);
 		}//exist	
 		return  detalleEnvio;

@@ -61,7 +61,7 @@ public final ProductRepository productRepository;
 				if(productRepository.existsById(prodId)) {
 					product=productRepository.findById(prodId).get();
 					if(imagen.length()!=0)product.setImagen(imagen);
-					if(nombre_producto.length()!=0)product.setNombreProducto(descripcion);
+					if(nombre_producto.length()!=0)product.setNombreProducto(nombre_producto);
 					if(descripcion.length()!=0)product.setDescripcion(descripcion);
 					if(precio.doubleValue()>0)product.setPrecio(precio);//<-revisa este en el product model
 					productRepository.save(product);
