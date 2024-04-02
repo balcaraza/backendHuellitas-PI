@@ -32,7 +32,7 @@ public class productosController {
 		
 	}
 	
-	@GetMapping (path = "prodId")
+	@GetMapping (path = "{prodId}")
 	public ProductosModel getProduct(@PathVariable("prodId")Long prodId) {
 		return productService.getProduct(prodId);
 	}
