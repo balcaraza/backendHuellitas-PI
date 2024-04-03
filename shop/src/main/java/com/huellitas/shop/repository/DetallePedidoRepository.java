@@ -10,5 +10,5 @@ import com.huellitas.shop.model.DetallePedido;
 
 @Repository
 public interface DetallePedidoRepository extends JpaRepository<DetallePedido, Long>{
-	Optional<List<DetallePedido>>findByIdPedido(Long idPedido);
+	List<DetallePedido>findByIdPedido(Long idPedido);
 }

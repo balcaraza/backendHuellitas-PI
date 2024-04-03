@@ -28,10 +28,10 @@ public class DetallePedidoController {
 	public List<DetallePedido>getDetallesPedidos(){
 		return detallePedidoService.getAllDetallesPedidos();
 	}
-	//get
-	@GetMapping (path="{detallePedidoId}")//http://localhost:8080/api/detallePedido/1
-	public DetallePedido getDetallePedido(@PathVariable("detallePedidoId") Long detallePedidoId) {
-		return detallePedidoService.getDetallePedido(detallePedidoId);
+	//get (detallePedidoId)
+	@GetMapping (path="{id_detalle_pedido}")//http://localhost:8080/api/detallePedido/1
+	public DetallePedido getDetallePedido(@PathVariable("id_detalle_pedido") Long id_detalle_pedido) {
+		return detallePedidoService.getDetallePedido(id_detalle_pedido);
 	}
 	//post
 	@PostMapping
@@ -39,16 +39,16 @@ public class DetallePedidoController {
 		return detallePedidoService.addDetallePedido(detallePedido);
 	}
 	//delete
-	@DeleteMapping(path="{detallePedidoId}")//http://localhost:8080/api/detallePedido/1
-	public DetallePedido DetallePedido(@PathVariable("detallePedidoId") Long detallePedidoId) {
-		return detallePedidoService.deleteDetallePedido(detallePedidoId);
+	@DeleteMapping(path="{id_detalle_pedido}")//http://localhost:8080/api/detallePedido/1
+	public DetallePedido deleteDetallePedido(@PathVariable("id_detalle_pedido") Long id_detalle_pedido) {
+		return detallePedidoService.deleteDetallePedido(id_detalle_pedido);
 	}
 	//put
-	@PutMapping(path="{detallePedidoId}")//http://localhost:8080/api/pedidos/
-	public DetallePedido updateDetallePedido(@PathVariable("detallePedidoId")Long detallePedidoId, 
+	@PutMapping(path="{id_detalle_pedido}")//http://localhost:8080/api/pedidos/
+	public DetallePedido updateDetallePedido(@PathVariable("id_detalle_pedido")Long id_detalle_pedido, 
 			@RequestBody DetallePedido detallePedido) {
-		return detallePedidoService.updateDetallePedido(detallePedidoId, 
-				detallePedido.getCantidad(), detallePedido.getPedidos_id_pedido(),
+		return detallePedidoService.updateDetallePedido(id_detalle_pedido, 
+				detallePedido.getCantidad(), detallePedido.getIdPedido(),
 				detallePedido.getProductos_id_productos());
 	}//
 }
