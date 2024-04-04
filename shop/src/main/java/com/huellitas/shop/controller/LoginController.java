@@ -20,7 +20,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 @RestController
-@RequestMapping(path = "/api/login/")
+@RequestMapping(path = "/api/login/")// http://localhost:8080/api/login/
 public class LoginController {
 	
 	private final UsuarioService usuarioService;
