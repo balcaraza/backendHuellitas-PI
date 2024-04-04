@@ -47,6 +47,7 @@ public class UsuarioService {
 	public Usuarios addUsuario(Usuarios usuario) {
 		Usuarios tmpUser = null;
 		if (usuarioRepository.findByCorreo(usuario.getCorreo()).isEmpty()) {
+			usuario.setPassword_usuario(passwordEncoder.encode(usuario.getPassword_usuario()));
 			tmpUser = usuarioRepository.save(usuario);
 		} else {
 			System.out.println("El usuario con este email [" + usuario.getCorreo() + "] ya esta registrado");
