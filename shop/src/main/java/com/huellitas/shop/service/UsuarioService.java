@@ -81,7 +81,8 @@ public class UsuarioService {
 			if (userByEmail.isPresent()) {
 				Usuarios tmpUser = userByEmail.get();
 				
-				//if(user.getPassword().equals(tmpUser.getPassword())) {
+			
+				//if(usuario.getPassword_usuario().equals(tmpUser.getPassword_usuario())) {
 				if (passwordEncoder.matches(usuario.getPassword_usuario(),tmpUser.getPassword_usuario())) {
 					
 				return true;
