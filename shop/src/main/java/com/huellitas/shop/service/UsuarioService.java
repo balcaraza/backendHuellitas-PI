@@ -1,8 +1,10 @@
 package com.huellitas.shop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.huellitas.shop.dto.ChangePassword;
@@ -12,6 +14,9 @@ import com.huellitas.shop.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 	public final UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	public PasswordEncoder passwordEncoder;
 
 	@Autowired
 	public UsuarioService(UsuarioRepository usuarioRepository) {
@@ -69,5 +74,17 @@ public class UsuarioService {
 		}//if exist
 		return tmpUser;
 	}//updateUsuario
+
+		public boolean validateUser(Usuarios usuario) {
+			Optional<Usuarios> userByEmail=usuarioRepository.findByCorreo(usuario.getCorreo());
+			if (userByEmail.isPresent()) {
+				Usuarios tmpUser = userByEmail.get();
+				//if(user.getPassword().equals(tmpUser.getPassword())) {
+				if (passwordEncoder.matches(usuario.getCorreo(),tmpUser.getCorreo())) {
+				return true;
+			}//if equals
+			}//if isPresent			
+			return false;
+		}
 
 }
