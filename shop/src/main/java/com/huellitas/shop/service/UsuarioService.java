@@ -23,7 +23,7 @@ public class UsuarioService {
 		this.usuarioRepository = usuarioRepository;
 	}// constructor
 
-	// Métodos de GET
+	// Metodos de GET
 	public List<Usuarios> getAllUsuarios() {
 		return usuarioRepository.findAll();
 	}// getAllUsuarios
@@ -33,7 +33,7 @@ public class UsuarioService {
 				.orElseThrow(() -> new IllegalArgumentException("El usuario con el id [" + usuaId + "] no existe "));
 	}// getUsuario
 
-	// Método para DELETE
+	// Metodo para DELETE
 	public Usuarios deleteUsuario(Long usuaId) {
 		Usuarios tmpUser = null;
 		if (usuarioRepository.existsById(usuaId)) {
@@ -77,12 +77,16 @@ public class UsuarioService {
 
 		public boolean validateUser(Usuarios usuario) {
 			Optional<Usuarios> userByEmail=usuarioRepository.findByCorreo(usuario.getCorreo());
+			System.err.println(userByEmail + "-------------------Buscada-----------------");
 			if (userByEmail.isPresent()) {
 				Usuarios tmpUser = userByEmail.get();
+				
 				//if(user.getPassword().equals(tmpUser.getPassword())) {
-				if (passwordEncoder.matches(usuario.getCorreo(),tmpUser.getCorreo())) {
+				if (passwordEncoder.matches(usuario.getPassword_usuario(),tmpUser.getPassword_usuario())) {
+					
 				return true;
 			}//if equals
+				
 			}//if isPresent			
 			return false;
 		}

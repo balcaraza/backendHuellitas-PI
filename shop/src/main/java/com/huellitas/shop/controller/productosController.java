@@ -16,7 +16,7 @@ import com.huellitas.shop.model.ProductosModel;
 import com.huellitas.shop.service.ProductService;
 
 @RestController
-@RequestMapping(path="/api/products/")
+@RequestMapping(path="/api/products/")//http://localhost:8080/api/products/
 public class productosController {
 	private final ProductService productService;// variable service
 

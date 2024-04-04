@@ -16,7 +16,7 @@ import com.huellitas.shop.model.DetalleTarjeta;
 import com.huellitas.shop.service.DetalleTarjetaService;
 
 @RestController
-@RequestMapping(path="/api/tarjetas/")
+@RequestMapping(path="/api/tarjetas/")//http://localhost:8080/api/tarjetas/
 public class DetalleTarjetaController {
 	//Nos va a syudar a vincularnos con el servicio
 		private final DetalleTarjetaService detalleTarjetaService;
