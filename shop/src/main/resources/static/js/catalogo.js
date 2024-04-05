@@ -70,147 +70,115 @@ let nuevoItemHTML = `
 }
 getData();
 
-
-
-
-
-
 const producto = document.querySelectorAll(".card");
 
-//Actualizar los favoritos en el localStorage
 const actualizarFavoritos = () => {
-  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
 };
 
-//Cargar los favoritos
 const cargaFavoritos = () => {
+    const almacenarFavoritos = localStorage.getItem("favoritos");
 
-  const almacenarFavoritos = localStorage.getItem("favoritos");
-
-  // Si hay datos a almacenar 
-  if (almacenarFavoritos) {
-    favoritos = JSON.parse(almacenarFavoritos);
-    showHTML();
-  }
-};
-
-// Función para añadir o quitar un producto de la lista de favoritos
-const toggleFavorite = (producto) => {
-    // Busca el índice del producto en la lista de favoritos
-    const index = favoritos.findIndex(element => element.id_producto === producto.id_producto);
-
-    // Si el producto ya está en la lista de favoritos, lo elimina; de lo contrario, lo añade
-  if (index > -1) {
-    favoritos.splice(index, 1); // Elimina el producto de la lista de favoritos
-    actualizarFavoritos(); // Actualiza el localStorage con los cambios
-  } else {
-    favoritos.push(producto); // Añade el producto a la lista de favoritos
-    actualizarFavoritos(); // Actualiza el localStorage con los cambios
-  };
-};
-
-// Función para mostrar los productos en el HTML y actualizar los botones de favoritos y carrito
-const showHTML = () => {
-  // Itera sobre cada producto
-  producto.forEach(produc => {
-    const productoId = produc.id_producto;
-
-    const esFavorito = favoritos.some(favoritos => favoritos.id_producto === productoId);
-    
-    //const favoritoBoton = produc.querySelector(".button-favorite");
-    const favoritoBotonActivo = produc.querySelector("#corazon-lleno");
-    const favoritoBotonDesactivado = produc.querySelector("#corazon-vacio");
-
-    if (favoritoBotonActivo && favoritoBotonDesactivado) {
-      favoritoBotonActivo.classList.toggle("active", esFavorito);
-      favoritoBotonDesactivado.classList.toggle("active", esFavorito);
+    if (almacenarFavoritos) {
+        favoritos = JSON.parse(almacenarFavoritos);
+        showHTML();
     }
+};
 
-    console.log("=======================");
-    console.log(productoId);
-    console.log(esFavorito);
-    //favoritoBoton.classList.toggle("favorite-active", esFavorito);
-    
-  })
+const toggleFavoriteAndCart = (product, isFavorite, isCart) => {
+    const index = favoritos.findIndex(element => element.id_producto === product.id);
+    if (isFavorite) {
+        if (index > -1) {
+            favoritos.splice(index, 1);
+        }
+    } else {
+        if (index === -1) {
+            favoritos.push(product);
+        }
+    }
+    localStorage.setItem("favoritos", JSON.stringify(favoritos));
+
+    // Aquí puedes agregar la lógica para manejar el carrito de manera similar a como se hace con los favoritos
 }
 
-//Agrega un evento que escucha el evento DOMContentLoaded al objeto document. El DOMContentLoaded se dispara cuando el HTML ha sido completamente cargado y analizado
+const showHTML = () => {
+    producto.forEach(produc => {
+        const productoId = produc.id_producto;
+
+        const esFavorito = favoritos.some(favoritos => favoritos.id_producto === productoId);
+
+        const favoritoBotonActivo = produc.querySelector("#corazon-lleno");
+        const favoritoBotonDesactivado = produc.querySelector("#corazon-vacio");
+
+        if (favoritoBotonActivo && favoritoBotonDesactivado) {
+            favoritoBotonActivo.classList.toggle("active", esFavorito);
+            favoritoBotonDesactivado.classList.toggle("active", esFavorito);
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  //Se seleccionan todos los elementos del DOM que tienen la clase .button-favorite y se almacenan en la variable btnFavorite
-  const btnFavorite = document.querySelectorAll(".button-favorite");
-  //Iterar sobre cada botón en la colección btnFavorite
-  btnFavorite.forEach(boton => {
-    boton.addEventListener('click', (e) => {
-      //Para obtener un elemento especifico del html
-      const card = e.target.closest(".card");
-      // Crear un objeto con la información del producto basado en el elemento card
-      const productos = {
+    const btnFavorite = document.querySelectorAll(".button-favorite");
+    btnFavorite.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            const card = e.target.closest(".card");
+            const productos = {
+                id: card.id_producto,
+                description: card.querySelector(".card-body p").textContent,
+                precio: card.querySelector(".card-precio h5").textContent,
+                img: card.querySelector(".card-img-top").src
+            }
+            toggleFavoriteAndCart(productos, true, false);
+            showHTML();
+            actualizarFavoritos();
+        });
+    });
+    cargaFavoritos();
+});
+
+const handleAddToCart = (e) => {
+    const card = e.target.closest(".card");
+    const product = {
         id: card.id_producto,
         description: card.querySelector(".card-body p").textContent,
-        precio: card.querySelector(".card-precio h5").textContent,
+        price: card.querySelector(".card-precio h5").textContent,
         img: card.querySelector(".card-img-top").src
-      }
-      toggleFavorite(productos);
-      showHTML();
-      actualizarFavoritos();
-    });
-  });
-  cargaFavoritos();
-});
+    };
 
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
 
-
-
-///------------------------------------------ Agregar a array de Carrito-----------------
-// Función para manejar el evento de clic en los botones de agregar al carrito
-const handleAddToCart = (e) => {
-  // Obtener la tarjeta (card) que contiene el botón presionado
-  const card = e.target.closest(".card");
-  
-  // Crear un objeto con la información del producto basado en la tarjeta
-  const product = {
-    id: card.id_producto,
-    description: card.querySelector(".card-body p").textContent,
-    precio: card.querySelector(".card-precio h5").textContent,
-    img: card.querySelector(".card-img-top").src
-  };
-  
-  // Obtener los productos en el carrito desde el localStorage o un arreglo vacío si no hay ninguno
-  let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-
-  // Agregar el producto al arreglo de productos en el carrito
-  carrito.push(product);
-
-  // Actualizar el localStorage con los productos en el carrito
-  localStorage.setItem("carrito", JSON.stringify(carrito));
-
-  // Llamar a la función para actualizar la interfaz del carrito
-  updateCartUI(card, true);
- 
+    updateUI(card, true, false);
 }
 
-// Agregar el evento de clic a todos los botones de agregar al carrito
 const addToCartButtons = document.querySelectorAll(".button-addcarrito");
-  addToCartButtons.forEach(button => {
-  button.addEventListener("click", handleAddToCart);
-
+addToCartButtons.forEach(button => {
+    button.addEventListener("click", handleAddToCart);
 });
 
-//Funcion para actualizar la interfaz del catalogo cuando se agregan o eliminan productos del carrito
-const updateCartUI = (car, esCarrito) => {
-  //Obtener los elementos de los botones del carrito del html
-  const carritoBotonActivo = car.querySelector("#carrito-lleno");
-  const carritoBotonDesactivado = car.querySelector("#carrito-vacio");
+const updateUI = (card, isCart, isFavorite) => {
+    const cartButtonActive = card.querySelector("#carrito-lleno");
+    const cartButtonInactive = card.querySelector("#carrito-vacio");
+    const favoriteButtonActive = card.querySelector("#corazon-lleno");
+    const favoriteButtonInactive = card.querySelector("#corazon-vacio");
 
-  if(carritoBotonActivo && carritoBotonDesactivado){
-    carritoBotonActivo.classList.toggle("active", esCarrito);
-    carritoBotonDesactivado.classList.toggle("active", esCarrito);
-  }
-  // Después de un tiempo, quitar la iluminación del carrito
-  setTimeout(() => {
-    carritoBotonActivo.classList.remove("active");
-    carritoBotonDesactivado.classList.remove("active");
-}, 400);
+    if (cartButtonActive && cartButtonInactive) {
+        cartButtonActive.classList.toggle("active", isCart);
+        cartButtonInactive.classList.toggle("active", isCart);
+    }
+
+    if (favoriteButtonActive && favoriteButtonInactive) {
+        favoriteButtonActive.classList.toggle("active", isFavorite);
+        favoriteButtonInactive.classList.toggle("active", isFavorite);
+    }
+
+    setTimeout(() => {
+        cartButtonActive.classList.remove("active");
+        cartButtonInactive.classList.remove("active");
+        favoriteButtonActive.classList.remove("active");
+        favoriteButtonInactive.classList.remove("active");
+    }, 400);
 }
 
 
