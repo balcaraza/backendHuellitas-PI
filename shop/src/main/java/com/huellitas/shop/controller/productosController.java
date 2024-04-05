@@ -42,7 +42,7 @@ public class productosController {
 		return productService.addProductModel(productosModel);
 	}
 	
-	//Dell
+	//Delete
 	@DeleteMapping(path = "{prodId}")
 	public ProductosModel deleteProduct(@PathVariable("prodId")Long prodId) {
 		return productService.deleteProduct(prodId);
