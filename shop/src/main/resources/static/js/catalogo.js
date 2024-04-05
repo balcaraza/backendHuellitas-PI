@@ -31,10 +31,14 @@ function getData(){
     let promesa= fetch("https://huellitas-p4xw.onrender.com/api/products/", {method:"GET"});
     promesa.then((res)=>{
         res.json()
-        .then((data)=>createProducts(data))
-        .catch((err)=>console.log("Error en el JSON")); 
-    })
-    .catch((err)=>console.log("Ocurrio un error en la solicitud",err));
+      .then((data) => {
+                    createProducts(data);
+                    // Guardar los datos en el localStorage
+                    localStorage.setItem('todosProductos', JSON.stringify(data));
+                })
+                .catch((err) => console.log("Error en el JSON"));
+        })
+        .catch((err) => console.log("Ocurrio un error en la solicitud", err));
 }
 
 function createProducts(products){
@@ -69,7 +73,7 @@ getData();
 
 
 
-localStorage.setItem('todosProductos', JSON.stringify(data));
+
 
 const producto = document.querySelectorAll(".card");
 
