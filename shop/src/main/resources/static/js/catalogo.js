@@ -150,7 +150,7 @@ productos.forEach(function (item) {
 
 const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWxjYXJhemFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTIyOTYxMTUsImV4cCI6MTcxMjU1NTMxNX0.L1qFNhkZX0bKqCA4dYCg_3vb_hX7v_oWGZJ0lwQKbYE';
 
-fetch('http://localhost:8080/api/products/', {
+fetch('https://huellitas-p4xw.onrender.com/api/products/', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
@@ -340,12 +340,3 @@ const updateCartUI = (car, esCarrito) => {
 
     
     
-/*
-fetch('https://manahuiaapi.onrender.com/api/viajes/', {
-                method: 'POST',
-                headers:{
-                    'Content-Type': 'application/json',
-                    "Authorization": "Bearer: " + token
-                },
-                body: JSON.stringify(data),
-            })*/
