@@ -78,7 +78,7 @@ public class UsuarioService {
 
 		public boolean validateUser(Usuarios usuario) {
 			Optional<Usuarios> userByEmail=usuarioRepository.findByCorreo(usuario.getCorreo());
-			System.err.println(userByEmail + "-------------------Buscada-----------------");
+			
 			if (userByEmail.isPresent()) {
 				Usuarios tmpUser = userByEmail.get();
 				
