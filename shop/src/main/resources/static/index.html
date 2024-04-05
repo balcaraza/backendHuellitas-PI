@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Meta general -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Fuentes Generales -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!--Estilos generales-->
+    <link rel="stylesheet" href="css/styles.css" />   
+    <link rel="stylesheet" href="css/principal.css" />   
+
+    <!--Bootstrap-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!--Recursos Especificos-->
+    <link rel="shortcut icon" href="./src/img/huellitasIcon.png" type="image/x-icon">
+
+    <title>Home</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-xl fixed-top">
+      <div class="container">
+        <a href="index.html"><img src="src/img/LogoHuellitas.png" alt="Logo Huellitas" /></a>
+        <!--Imagen del logo de la pagina web Huellitas-->
+
+        <!-- Boton para que el menu sea desplegable al momento de ser responsiva, entre 320px(Mobile) a 768px(Tablet) -->
+        <button
+          class="navbar-toggler navbar-toggler-menu"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="catalogo.html" >Productos</a>
+            <a class="nav-link" href="tipsRapidos.html" >Tips</a>
+            <a class="nav-link" href="acercaNosotros.html" >Nosotros</a>
+            <a class="nav-link" href="contacto.html">Contacto</a>
+            <!--Boton para ingresar a la cuenta del usuario-->
+            <a href="registro.html"  rel="noopener noreferrer" style="text-decoration: none;">
+              <button type="button" class="btn btn-lg btn-c" id="ingresar" style="display: none;">Ingresar</button>
+            </a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="user" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: none;">
+                Perfil
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="carrito.html">Carrito</a></li>
+                <li><a class="dropdown-item" href="favoritos.html">Favoritos</a></li>
+                <li><a  id="cerrarSesion"  class="dropdown-item" href="#">Cerrar sesión</a></li>
+              </ul>
+            </li>
+      
+          </div>
+        </div>
+      </div>
+    </nav>
+     <main>
+    <div class="espacio">
+      <h2 class="encabezado negro">¡Dale a tu mejor amigo la vida que se merece, <span class="amarillo">con productos que hacen la cola moverse de felicidad!</span></h2>
+    </div>
+      <h4 class="azul">Da un primer vistazo a nuestros kits.</h4>
+   
+    <div id="carouselExampleFade" class="carousel slide carousel-fade">
+      <div class="carousel-inner">
+        <div class="carousel-item active text-center">
+          <div class="cardKit">
+            <div class="contenido">
+              <div class="back">
+                <div class="back-content">
+                  <img src="src/img/Kits/kits01.png" alt="...">
+                </div>
+              </div>
+              <div class="front">
+                <div class="img">     <!-- Para los circulos flotantes -->
+                  <div class="circle"></div>
+                  <div class="circle" id="right"></div>
+                  <div class="circle" id="bottom"></div>
+                </div>
+                <div class="front-content">
+                  <small class="badge">Kit PetPaseador</small>
+                  <div class="description">
+                    <div class="title">                     
+                      <p class="title">
+                        <strong>Contiene:</strong>
+                        <ol style="text-align: left;">
+                          <li>Sartén para comida o agua.</li>
+                          <li>Correa rosa.</li>
+                          <li>Dos Pelotas.</li>
+                        </ol>
+                        <strong>$200</strong>
+                    </div>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cardKit">
+            <div class="contenido">
+              <div class="back">
+                <div class="back-content">
+                  <img src="src/img/Kits/kits02.png" alt="...">
+                </div>
+              </div>
+              <div class="front">
+                <div class="img">     <!-- Para los circulos flotantes -->
+                  <div class="circle"></div>
+                  <div class="circle" id="right"></div>
+                  <div class="circle" id="bottom"></div>
+                </div>
+                <div class="front-content">
+                  <small class="badge">Kit PrimerMichi</small>
+                  <div class="description">
+                    <div class="title">                     
+                      <p class="title">
+                        <strong>Contiene:</strong>
+                        <ol style="text-align: left;">
+                          <li>Arenero.</li>
+                          <li>Rascador.</li>
+                          <li>Jaula transportadora (Kennel).</li>
+                        </ol>
+                        <strong>$350</strong>
+                    </div>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item text-center">
+          <div class="cardKit">
+            <div class="contenido">
+              <div class="back">
+                <div class="back-content">
+                  <img src="src/img/Kits/kits03.png" alt="...">
+                </div>
+              </div>
+              <div class="front">
+                <div class="img">     <!-- Para los circulos flotantes -->
+                  <div class="circle"></div>
+                  <div class="circle" id="right"></div>
+                  <div class="circle" id="bottom"></div>
+                </div>
+                <div class="front-content">
+                  <small class="badge">Kit Fashion</small>
+                  <div class="description">
+                    <div class="title"> 
+                        <strong>Contiene:</strong>
+                        <ol style="text-align: left;">
+                          <li>Un suéter de Toy Story.</li>
+                          <li>Una pechera.</li>
+                          <li>Un cepillo.</li>
+                        </ol>
+                        <strong>$150</strong>
+                    </div>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cardKit">
+            <div class="contenido">
+              <div class="back">
+                <div class="back-content">
+                  <img src="src/img/Kits/kits04.png" alt="...">
+                </div>
+              </div>
+              <div class="front">
+                <div class="img">     <!-- Para los circulos flotantes -->
+                  <div class="circle"></div>
+                  <div class="circle" id="right"></div>
+                  <div class="circle" id="bottom"></div>
+                </div>
+                <div class="front-content">
+                  <small class="badge">Kit PetCare</small>
+                  <div class="description">
+                    <div class="title"> 
+                        <strong>Contiene:</strong>
+                        <ol style="text-align: left;">
+                          <li>Cepillo.</li>
+                          <li>Corta garras.</li>
+                          <li>Pelota.</li>
+                          <li>Bolsas.</li>
+                        </ol>
+                        <strong>$250</strong>
+                    </div>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item text-center">
+          <div class="cardKit">
+            <div class="contenido">
+              <div class="back">
+                <div class="back-content">
+                  <img src="src/img/Kits/kits05.png" alt="...">
+                </div>
+              </div>
+              <div class="front">
+                <div class="img">     <!-- Para los circulos flotantes -->
+                  <div class="circle"></div>
+                  <div class="circle" id="right"></div>
+                  <div class="circle" id="bottom"></div>
+                </div>
+                <div class="front-content">
+                  <small class="badge">Kit PetCute</small>
+                  <div class="description">
+                    <div class="title"> 
+                        <strong>Contiene:</strong>
+                        <ol style="text-align: left;">
+                          <li>Sartén para comida o agua.</li>
+                          <li>Suéter rosa de Mimi.</li>
+                          <li>Peluche de dinosaurio.</li>
+                        </ol>
+                        <strong>$150</strong>   
+                    </div>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cardKit">
+            <div class="contenido">
+              <div class="back">
+                <div class="back-content">
+                  <img src="src/img/Kits/kits06.png" alt="...">
+                </div>
+              </div>
+              <div class="front">
+                <div class="img">     <!-- Para los circulos flotantes -->
+                  <div class="circle"></div>
+                  <div class="circle" id="right"></div>
+                  <div class="circle" id="bottom"></div>
+                </div>
+                <div class="front-content">
+                  <small class="badge">Kit Pink</small>
+                  <div class="description">
+                    <div class="title"> 
+                        <strong>Contiene:</strong>
+                        <ol style="text-align: left;">
+                          <li>Cepillo.</li>
+                          <li>Correa rosa.</li>
+                          <li>Sartén para comida o agua.</li>
+                          <li>Corta garras.</li>
+                        </ol>
+                        <strong>$250</strong>
+                    </div>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true" style="background-image: url(/src/img/flechaIzq.png)"></span>
+        <span class="visually-hidden" >Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true" style="background-image: url(/src/img/flechaDer.png)"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+      <br>
+    </div>
+    <div class="btnconseguir">
+    <a href="catalogo.html"><button class="Consiguelos">¡Consíguelos!</button></a>
+    </div>
+    <h4 class="azul">Échale un vistazo a algunos productos.</h4>
+    <article>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="src/img/Productos/PelucheDinosaurio.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Peluche para mascota de dinosaurio, 100% Poliéster 35.5x13 Cm</p>
+        </div>
+        <h5 class="card-precio">$129.90</h5>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="src/img/Productos/TazonRosa.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Tazón para mascota de Disney Minnie mouse, plástico y de color rosa</p>
+        </div>
+        <h5 class="card-precio">$185.09</h5>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="src/img/Productos/DisfrazLaGarra.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Disfraz para mascota, de Disney alíen toy story, textil de color verde y grande</p>
+        </div>
+        <h5 class="card-precio">$149.90</h5>
+      </div>
+      <div id="cuartacard" class="card" style="width: 18rem;">
+        <img class="card-img-top" src="src/img/Productos/ChalecoArnes.jpg" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text">Chaleco con arnés para mascotas 100% poliéster azul 25x35</p>
+        </div>
+        <h5 class="card-precio">$99.90</h5>
+      </div>
+    </article>
+  </div>
+<br>
+  <div class="btnconseguir"> <a href="catalogo.html"><button class="Consiguelos">¡Consíguelos!</button></a> </div>
+    </main class="container">
+    <!--footer-->
+    <br>
+    <footer>
+        <div class="col-md-4 d-flex align-items-center mt-10" ><!--resolucion-->
+          <p style="color: white;"> <br/> © Huellitas SA de CV <br/>
+          Todos los derechos reservados <br/></p>
+        </div>
+        <div class="col-md-4 d-flex justify-content-space" id="footerImags">
+          <a href="#"><img src="src/img/facebook.png" alt="facebook" /></a>
+          <a href="#"><img src="src/img/instagram.png" alt="instagram" /></a>
+          <a href="#"><img src="src/img/twitter.png" alt="twitter" /></a>
+        </div>
+    </footer>
+    <!--footer-->
+    <!--Script bootstrap-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!--Script Custom-->
+<!--Script Custom-->
+<script src="js/verificarSesion.js" ></script>
+
+  </body>
+</html>

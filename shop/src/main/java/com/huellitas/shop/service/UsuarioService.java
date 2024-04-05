@@ -1,8 +1,10 @@
 package com.huellitas.shop.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.huellitas.shop.dto.ChangePassword;
@@ -12,13 +14,16 @@ import com.huellitas.shop.repository.UsuarioRepository;
 @Service
 public class UsuarioService {
 	public final UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	public PasswordEncoder passwordEncoder;
 
 	@Autowired
 	public UsuarioService(UsuarioRepository usuarioRepository) {
 		this.usuarioRepository = usuarioRepository;
 	}// constructor
 
-	// Métodos de GET
+	// Metodos de GET
 	public List<Usuarios> getAllUsuarios() {
 		return usuarioRepository.findAll();
 	}// getAllUsuarios
@@ -28,7 +33,7 @@ public class UsuarioService {
 				.orElseThrow(() -> new IllegalArgumentException("El usuario con el id [" + usuaId + "] no existe "));
 	}// getUsuario
 
-	// Método para DELETE
+	// Metodo para DELETE
 	public Usuarios deleteUsuario(Long usuaId) {
 		Usuarios tmpUser = null;
 		if (usuarioRepository.existsById(usuaId)) {
@@ -42,6 +47,7 @@ public class UsuarioService {
 	public Usuarios addUsuario(Usuarios usuario) {
 		Usuarios tmpUser = null;
 		if (usuarioRepository.findByCorreo(usuario.getCorreo()).isEmpty()) {
+			usuario.setPassword_usuario(passwordEncoder.encode(usuario.getPassword_usuario()));
 			tmpUser = usuarioRepository.save(usuario);
 		} else {
 			System.out.println("El usuario con este email [" + usuario.getCorreo() + "] ya esta registrado");
@@ -69,5 +75,21 @@ public class UsuarioService {
 		}//if exist
 		return tmpUser;
 	}//updateUsuario
+
+		public boolean validateUser(Usuarios usuario) {
+			Optional<Usuarios> userByEmail=usuarioRepository.findByCorreo(usuario.getCorreo());
+			System.err.println(userByEmail + "-------------------Buscada-----------------");
+			if (userByEmail.isPresent()) {
+				Usuarios tmpUser = userByEmail.get();
+				
+				//if(user.getPassword().equals(tmpUser.getPassword())) {
+				if (passwordEncoder.matches(usuario.getPassword_usuario(),tmpUser.getPassword_usuario())) {
+					
+				return true;
+			}//if equals
+				
+			}//if isPresent			
+			return false;
+		}
 
 }

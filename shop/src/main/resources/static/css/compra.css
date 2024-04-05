@@ -1,0 +1,49 @@
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form {
+    padding: 10px;
+    
+}
+
+.form form {
+    display: block; /* Ajustamos el formulario para que se comporte como bloque */
+    margin-bottom: 10px; /* Agregamos un margen inferior para separar los formularios */
+}
+
+.form form label,
+.form form input {
+    display: block;
+    margin-bottom: 5px;
+}
+@media (max-width: 768px) { /* Consulta de medios para dispositivos con ancho máximo de 768px (vista móvil) */
+    .container {
+        grid-template-columns: 1fr; /* Cambiamos a una sola columna */
+    }
+}
+#pagar{
+    background-color: #007BA7 ;
+    color: white;
+    font-size: 18px;
+    border: 0;
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-family: 'Roboto'
+    }
+    #pagar:hover{
+    background-color: #007BA7 ;
+    color: white;
+    padding: 9px 18px;
+    opacity: 0.8;
+    }

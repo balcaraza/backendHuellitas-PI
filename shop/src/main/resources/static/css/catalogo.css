@@ -1,0 +1,315 @@
+/*Card - Acomodar de forma uniforme todas las card */
+.items-card{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+/* Titulo de la pagina */
+h2{
+    /* font-family: "Roboto", sans-serif; */
+    font-family: "Montserrat", sans-serif;
+    padding: 30px;
+    font-weight: bold;
+
+}
+/* Card - Cambiar el tamaño de toda la card */
+.card{
+    margin: 15px;
+    width: 18rem; /*Tamaño de mi card*/
+    transition: transform 0.3s ease-in-out;
+}
+/* Agregarle un efecto a mi card */
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 1px 1px 10px gray; /*Aplicarle un sombreado*/
+
+}
+/* Card - imagen del carrito de compras */
+.img-carrito{
+    width: 25px;
+    margin-bottom: 10px;
+    flex-direction: row;
+
+}
+/* Card - Agregarle un efecto al carrito de compras */
+.img-carrito:hover{
+    cursor: pointer; /*cambia el diseño del cursor al ponerlo sobre la imagen*/
+}
+/* Card - Boton para agregar a favoritos */
+.button-favorite{
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    padding-left: 15px;
+}
+
+.button-addcarrito{
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    padding-left: 15px;
+}
+
+/* Card - Cambiar la posicion del precio */
+.card-precio h5{
+    text-align: right;
+    margin-top: auto;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    color: #C45564;
+    padding: 20px;
+}
+/* Card - Modificar todo lo que se encuentre dentro de la card */
+.card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    font-family: "Montserrat", sans-serif;
+    text-align: justify;
+    height: 100px;
+}
+.text-amarillo{
+    color: #FCD168;
+    Text-shadow: 0.5px 0.5px 1px #383B47;
+}
+.card-img-top {
+    height: 250px;
+    /*object-fit: cover; /* Cubrir completamente el área del contenedor de la imagen */
+}
+
+.button-addcarito{/*fondo de boton carrito*/
+    border: none;
+    background-color: transparent;
+    font-size: 25px;
+    padding-left: 15px;
+}
+
+@media (max-width: 450px) {
+    .encabezado{
+        font-weight: 300;
+        font-size: 20pt;
+        /* grid-template-columns: repeat(2, 1fr); */
+    }
+}
+#corazon-lleno {
+	color: red;
+	display: none;
+}
+
+#corazon-vacio.active {
+	background-color: red;
+	display: none;
+}
+
+#corazon-lleno.active {
+	display: block;
+	color: red;
+}
+
+#carrito-lleno{
+    color:black;
+    display: none;
+}
+
+#carrito-vacio.active{
+    background-color: black;
+    display: none;
+}
+
+#carrito-lleno.active{
+    /* color: black; */
+    display: block;
+}
+
+/* div principal del titulo e imagen del perrito */
+.encabezado-principal {
+    display: flex;
+    margin-top: 60px;
+    padding: 15px;
+}
+/* Imagen del encabezado del perrito con su peluche */
+.img-perro{
+    height: 300px;
+    display: block;
+    margin-left: -310px;
+    margin-top: 30px;
+}
+/* Imagen de fondo del perrito */
+.img-fondo-perro {
+    height: 400px;
+    margin-top: -20px;
+}
+/* h2 del titulo del encabezado */
+.encabezado{
+    font-size: 47px;
+}
+/* div del Titulo del encabezado */
+.encabezadoMovil {
+    margin-left: 60px;
+}
+
+/* Estilos específicos para Laptop (máximo ancho de 1024px) */
+@media (max-width: 1024px) {
+    /* h2 del titulo del encabezado */
+    .encabezado{
+        font-size: 32px;
+    }
+    /* div del Titulo del encabezado */
+    .encabezadoMovil{
+        margin-left: 15px;
+    }
+    /* Imagen del encabezado del perrito con su peluche */
+    .img-perro{
+        height: 270px;
+        display: block;
+        margin-left: -275px;
+    }
+    /* Imagen de fondo del perrito */
+    .img-fondo-perro {
+        height: 355px;
+        margin-bottom: 60px;
+    }
+}
+/* Estilos específicos para Tablet (máximo ancho de 768px) */
+@media (max-width: 768px){
+    /* h2 del titulo del encabezado */
+    .encabezado{
+        font-size: 29px;
+    }
+    /* div del Titulo del encabezado */
+    .encabezadoMovil{
+        margin-left: 15px;
+    }
+    /* Imagen del encabezado del perrito con su peluche */
+    .img-perro{
+        height: 220px;
+        display: block;
+        margin-left: -220px;
+    }
+    /* Imagen de fondo del perrito */
+    .img-fondo-perro {
+        height: 290px;
+        margin-bottom: 60px;
+        margin-top: 5px;
+    }
+    /* Card - Cambiar el tamaño de toda la card */
+    .card{
+        margin: 15px;
+        width: 15rem; /*Tamaño de mi card*/
+        transition: transform 0.3s ease-in-out;
+    }
+    /* Imagen de las cards */
+    .card-img-top{
+        height: 200px;
+        width: 25px;
+    }
+    /* Card - Modificar todo lo que se encuentre dentro de la card */
+    .card-body{
+        font-size: 15px;
+    }
+}
+@media (max-width: 563px) {
+    /* Imagen del encabezado del perrito con su peluche */
+    .img-perro{
+        height: 220px;
+        display: block;
+        margin-left: 180px;
+        /* margin-bottom: 500px; */
+    }
+    /* Imagen de fondo del perrito */
+    .img-fondo-perro {
+        height: 300px;
+        margin-bottom: -310px;
+    }
+    /* div principal del titulo e imagen del perrito */
+    .encabezado-principal {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+    }
+    /* h2 del titulo del encabezado */
+    .encabezado{
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+}
+/* Estilos específicos para Mobile L (máximo ancho de 425px) */
+@media (max-width: 426px){
+
+    /* Imagen del encabezado del perrito con su peluche */
+    .img-perro{
+        height: 220px;
+        display: block;
+        margin-left: 110px;
+        /* margin-bottom: 500px; */
+    }
+    /* Imagen de fondo del perrito */
+    .img-fondo-perro {
+        height: 300px;
+        margin-bottom: -320px;
+    }
+    /* div principal del titulo e imagen del perrito */
+    .encabezado-principal {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+    }
+    /* h2 del titulo del encabezado */
+    .encabezado{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    /* Card - Cambiar el tamaño de toda la card */
+    .card{
+        margin: 15px;
+        width: 15rem; /*Tamaño de mi card*/
+        transition: transform 0.3s ease-in-out;
+    }
+     /* Imagen de las cards */
+    .card-img-top{
+        height: 200px;
+        width: 25px;
+    }
+    /* Card - Modificar todo lo que se encuentre dentro de la card */
+    .card-body{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 376px) {
+     /* Imagen del encabezado del perrito con su peluche */
+    .img-perro{
+        height: 200px;
+        display: block;
+        margin-left: 95px;
+    }
+    /* h2 del titulo del encabezado */
+    .encabezado{
+        font-size: 25px;
+        font-weight: bold;
+    }
+    /* Imagen de fondo del perrito */
+    .img-fondo-perro {
+        height: 260px;
+        margin-bottom: -290px;
+    }
+}
+@media (max-width: 320px) {
+    /* Imagen del encabezado del perrito con su peluche */
+    .img-perro{
+        height: 200px;
+        display: block;
+        margin-left: 70px;
+    }
+   /* Imagen de fondo del perrito */
+    .img-fondo-perro {
+        height: 260px;
+        margin-bottom: -295px;
+    }
+   /* div principal del titulo e imagen del perrito */
+    .encabezado-principal {
+        margin-top: 20px;
+    }
+}
