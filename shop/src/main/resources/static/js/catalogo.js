@@ -97,7 +97,7 @@ const cargaFavoritos = () => {
 // Función para añadir o quitar un producto de la lista de favoritos
 const toggleFavorite = (producto) => {
     // Busca el índice del producto en la lista de favoritos
-    const index = favoritos.findIndex(element => element.id === producto.id);
+    const index = favoritos.findIndex(element => element.id_producto === producto.id_producto);
 
     // Si el producto ya está en la lista de favoritos, lo elimina; de lo contrario, lo añade
   if (index > -1) {
@@ -113,9 +113,9 @@ const toggleFavorite = (producto) => {
 const showHTML = () => {
   // Itera sobre cada producto
   producto.forEach(produc => {
-    const productoId = produc.id;
+    const productoId = produc.id_producto;
 
-    const esFavorito = favoritos.some(favoritos => favoritos.id === productoId);
+    const esFavorito = favoritos.some(favoritos => favoritos.id_producto === productoId);
     
     //const favoritoBoton = produc.querySelector(".button-favorite");
     const favoritoBotonActivo = produc.querySelector("#corazon-lleno");
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const card = e.target.closest(".card");
       // Crear un objeto con la información del producto basado en el elemento card
       const productos = {
-        id: card.id,
+        id: card.id_producto,
         description: card.querySelector(".card-body p").textContent,
         precio: card.querySelector(".card-precio h5").textContent,
         img: card.querySelector(".card-img-top").src
@@ -169,7 +169,7 @@ const handleAddToCart = (e) => {
   
   // Crear un objeto con la información del producto basado en la tarjeta
   const product = {
-    id: card.id,
+    id: card.id_producto,
     description: card.querySelector(".card-body p").textContent,
     precio: card.querySelector(".card-precio h5").textContent,
     img: card.querySelector(".card-img-top").src
