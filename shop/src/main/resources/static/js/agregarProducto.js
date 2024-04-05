@@ -110,7 +110,7 @@ btnAgregar.addEventListener("click", function () {
   
  };
 console.log(data);
-const token='eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb25zZUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcxMjI5MDg3MiwiZXhwIjoxNzEyMzI2ODcyfQ.MVgMthcc6yrHShhlIBvuNTn3a_DovqTuLxnbd3-tK0s';
+const token='eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWxjYXJhemFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTIyOTYxMTUsImV4cCI6MTcxMjU1NTMxNX0.L1qFNhkZX0bKqCA4dYCg_3vb_hX7v_oWGZJ0lwQKbYE';
     fetch('http://localhost:8080/api/products/', {
                 method: 'POST',
                 headers:{
