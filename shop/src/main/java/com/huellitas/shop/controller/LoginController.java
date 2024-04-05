@@ -42,7 +42,7 @@ public class LoginController {
 	
 	private String generateToken(String username) {
 		Calendar calendar = Calendar.getInstance();//Fecha hora actual
-		calendar.add(Calendar.HOUR, 10); // Pruebas
+		calendar.add(Calendar.HOUR, 72); // Pruebas
 		//calendar.add(Calendar.MINUTE, 30);// Producción
 		return Jwts.builder().setSubject(username).claim("role", "user")
 		.setIssuedAt(new Date())

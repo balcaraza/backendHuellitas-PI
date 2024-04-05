@@ -148,6 +148,25 @@ productos.forEach(function (item) {
   itemsContainer.insertAdjacentHTML("beforeend", itemHTML);
 });
 
+const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb25zZUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcxMjI5MDg3MiwiZXhwIjoxNzEyMzI2ODcyfQ.MVgMthcc6yrHShhlIBvuNTn3a_DovqTuLxnbd3-tK0s';
+
+fetch('http://localhost:8080/api/products/', {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token // Sin los dos puntos después de "Bearer"
+    }
+})
+.then(response => response.json())
+.then(data => {
+    console.log('Success:', data);
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+
+
+
 localStorage.setItem("productos", productosJSON);
 nuevoProducto = JSON.parse(localStorage.getItem("productosNuevos")) || [];
 nuevoProducto.forEach(function (item) {
@@ -317,3 +336,16 @@ const updateCartUI = (car, esCarrito) => {
     carritoBotonDesactivado.classList.remove("active");
 }, 400);
 }
+
+
+    
+    
+/*
+fetch('https://manahuiaapi.onrender.com/api/viajes/', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer: " + token
+                },
+                body: JSON.stringify(data),
+            })*/

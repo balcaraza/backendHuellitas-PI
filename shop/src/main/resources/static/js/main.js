@@ -86,7 +86,58 @@ btnValidarFirst.addEventListener("click", function (event) {
     localStorage.setItem("registros", JSON.stringify(registros));
     modalTxt.innerText = "¡Su registro fue exitoso!";
     $("#exampleModal").modal("show");
-   
+    
+    /*---------------------------
+       const URL_MAIN ='/api/registro/';
+ const data =     {nombre: nombre.value,
+      			telefono: telefono.value,
+      				correo: correo.value,
+      		password_usuario: contrasena.value,
+      		idRol: 2
+ };
+
+ fetch(URL_MAIN, {
+   method: 'POST', // or 'PUT'
+   headers: {
+     'Content-Type': 'application/json',
+   },
+   body: JSON.stringify(data),
+ })
+ .then(response => response.json())
+ .then(data => {
+   console.log('Success:', data);
+ })
+ .catch((error) => {
+   console.error('Error:', error);
+ });
+    ---------------------------*/
+    const data=
+ {
+nombre: nombre.value,
+  telefono: telefono.value,
+  correo: correo.value,
+  password_usuario: contrasena.value,
+  idRol: 2
+ };
+console.log(data);
+    fetch('http://localhost:8080/api/registro/', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response=>response.json()
+            )
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error)=>{
+                console.error('Error:');
+            
+            })
+    
+ 
     limpiarCampos(nombre, correo, contrasena, confirmarContrasena, telefono, alertUnoTxt, alertUno);
     nombre.value = "";
     correo.value = "";
@@ -207,6 +258,35 @@ btnValidarSecond.addEventListener("click", function () {
     if (encontrado) {
       console.log("Sesión válida");
       localStorage.setItem("bandera", "activada");
+      
+      
+       const data=
+ {
+    "correo": correo2.value,
+    "password_usuario": contrasena2.value
+  
+ };
+console.log(data);
+const token='eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb25zZUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcxMjI5MDg3MiwiZXhwIjoxNzEyMzI2ODcyfQ.MVgMthcc6yrHShhlIBvuNTn3a_DovqTuLxnbd3-tK0s';
+    fetch('http://localhost:8080/api/login/', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer: " + token
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response=>response.json()
+            )
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error)=>{
+                console.error('Error:');
+            
+            })
+      
+      
     // Muestra el modal de SweetAlert2
     Swal.fire("¡Bienvenido!").then(() => {
         // Agrega un retraso de 2 segundos antes de redirigir

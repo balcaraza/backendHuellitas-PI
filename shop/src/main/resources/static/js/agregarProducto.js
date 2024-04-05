@@ -101,7 +101,36 @@ btnAgregar.addEventListener("click", function () {
     localStorage.setItem("productosNuevos", JSON.stringify(productosNuevos));
     modalTxt.innerText = "Se agregó correctamente el producto";
     $('#exampleModal').modal('show');
+    const data=
+ {
+ "imagen": imagen.src,
+    "nombreProducto": id,
+    "descripcion": insertarDescripcion.value,
+    "precio": insertarPrecio.value
+  
+ };
+console.log(data);
+const token='eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb25zZUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTcxMjI5MDg3MiwiZXhwIjoxNzEyMzI2ODcyfQ.MVgMthcc6yrHShhlIBvuNTn3a_DovqTuLxnbd3-tK0s';
+    fetch('http://localhost:8080/api/products/', {
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    "Authorization": "Bearer: " + token
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response=>response.json()
+            )
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error)=>{
+               console.error('Error:', error);
+            
+            })
+    
     // Limpiamos los campos
+    
     insertarDescripcion.style.border = "";
     insertarPrecio.style.border = "";
     alertValidacionesTexto.innerHTML = "";
