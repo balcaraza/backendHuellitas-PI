@@ -148,13 +148,13 @@ productos.forEach(function (item) {
   itemsContainer.insertAdjacentHTML("beforeend", itemHTML);
 });
 
-const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWxjYXJhemFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTIyOTYxMTUsImV4cCI6MTcxMjU1NTMxNX0.L1qFNhkZX0bKqCA4dYCg_3vb_hX7v_oWGZJ0lwQKbYE';
+//const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiYWxjYXJhemFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTIyOTYxMTUsImV4cCI6MTcxMjU1NTMxNX0.L1qFNhkZX0bKqCA4dYCg_3vb_hX7v_oWGZJ0lwQKbYE';
 
-fetch('https://huellitas-p4xw.onrender.com/api/products/', {
+/*fetch('https://huellitas-p4xw.onrender.com/api/products/', {
     method: 'GET',
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token // Sin los dos puntos después de "Bearer"
+        
     }
 })
 .then(response => response.json())
@@ -163,7 +163,47 @@ fetch('https://huellitas-p4xw.onrender.com/api/products/', {
 })
 .catch(error => {
     console.error('Error:', error);
+});*/
+
+function getData(){
+    let promesa= fetch("https://huellitas-p4xw.onrender.com/api/products/", {method:"GET"});
+    promesa.then((res)=>{
+        res.json()
+        .then((data)=>createProducts(data))
+        .catch((err)=>console.log("Error en el JSON")); 
+    })
+    .catch((err)=>console.log("Ocurrio un error en la solicitud",err));
+}
+
+function createProducts(products){
+	products.forEach(item => {
+let nuevoItemHTML = `
+        <div class="card">
+            <div>
+                <img style="max-height:300px" src="${item.imagen}" class="card-img-top" alt="...">
+                <button class="button-favorite">
+                    <i class="fa-regular fa-heart"></i>
+                </button> 
+                <button class="button-addcarito">
+                <i class="fa-solid fa-cart-shopping" style="color: #bababa;" id="carrito-vacio"></i>
+                <i class="fa-solid fa-cart-shopping" id="carrito-lleno" ></i>
+                </button>                 
+            </div>
+            <div class="card-body">
+                <p class="card-descripcion">${item.descripcion}</p>
+            </div>
+            <div class="card-precio">
+              <h5 class="">$${item.precio}</h5>
+            </div>
+        </div>`;
+
+  // Insertar el HTML generado en el contenedor
+  itemsContainer.insertAdjacentHTML("beforeend", nuevoItemHTML);
+  
 });
+}
+getData();
+
 
 
 

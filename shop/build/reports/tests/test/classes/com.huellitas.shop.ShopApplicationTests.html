@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.008s</div>
+<div class="counter">0.011s</div>
 <p>duration</p>
 </div>
 </td>
@@ -253,7 +253,7 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
 </thead>
 <tr>
 <td class="failures">contextLoads()</td>
-<td class="failures">0.008s</td>
+<td class="failures">0.011s</td>
 <td class="failures">failed</td>
 </tr>
 </table>
@@ -261,21 +261,21 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
 <div id="tab2" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>00:31:09.765 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
-00:31:09.782 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
-00:31:09.834 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.huellitas.shop.ShopApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
-00:31:09.855 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.huellitas.shop.ShopApplicationTests], using SpringBootContextLoader
-00:31:09.864 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.huellitas.shop.ShopApplicationTests]: class path resource [com/huellitas/shop/ShopApplicationTests-context.xml] does not exist
-00:31:09.865 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.huellitas.shop.ShopApplicationTests]: class path resource [com/huellitas/shop/ShopApplicationTestsContext.groovy] does not exist
-00:31:09.865 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.huellitas.shop.ShopApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-00:31:09.866 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.huellitas.shop.ShopApplicationTests]: ShopApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-00:31:09.928 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.huellitas.shop.ShopApplicationTests]
-00:31:10.019 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\Usuarios\rey_j\Documentos\backendHuellitas-PI\shop\build\classes\java\main\com\huellitas\shop\ShopApplication.class]
-00:31:10.020 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.huellitas.shop.ShopApplication for test class com.huellitas.shop.ShopApplicationTests
-00:31:10.236 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.huellitas.shop.ShopApplicationTests]: using defaults.
-00:31:10.237 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
-00:31:10.266 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5a12c728, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@79ab3a71, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6e5bfdfc, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3d829787, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@71652c98, org.springframework.test.context.support.DirtiesContextTestExecutionListener@51bde877, org.springframework.test.context.transaction.TransactionalTestExecutionListener@60b85ba1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@492fc69e, org.springframework.test.context.event.EventPublishingTestExecutionListener@117632cf, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2fb68ec6, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@d71adc2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3add81c4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1a1d3c1a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1c65121, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@159e366]
-00:31:10.270 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@5c371e13 testClass = ShopApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@530a8454 testClass = ShopApplicationTests, locations = '{}', classes = '{class com.huellitas.shop.ShopApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@242aa8d9, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@a8c1f44, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7a8fa663, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1623134f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4de41af9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@34f6515b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
+<pre>01:00:42.429 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+01:00:42.438 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+01:00:42.480 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.huellitas.shop.ShopApplicationTests] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+01:00:42.490 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.huellitas.shop.ShopApplicationTests], using SpringBootContextLoader
+01:00:42.493 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.huellitas.shop.ShopApplicationTests]: class path resource [com/huellitas/shop/ShopApplicationTests-context.xml] does not exist
+01:00:42.494 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.huellitas.shop.ShopApplicationTests]: class path resource [com/huellitas/shop/ShopApplicationTestsContext.groovy] does not exist
+01:00:42.494 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.huellitas.shop.ShopApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+01:00:42.497 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.huellitas.shop.ShopApplicationTests]: ShopApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+01:00:42.562 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.huellitas.shop.ShopApplicationTests]
+01:00:42.675 [Test worker] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [D:\Usuarios\rey_j\Documentos\backendHuellitas-PI\shop\build\classes\java\main\com\huellitas\shop\ShopApplication.class]
+01:00:42.676 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.huellitas.shop.ShopApplication for test class com.huellitas.shop.ShopApplicationTests
+01:00:42.833 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.huellitas.shop.ShopApplicationTests]: using defaults.
+01:00:42.833 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener]
+01:00:42.865 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5a12c728, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@79ab3a71, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@6e5bfdfc, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@3d829787, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@71652c98, org.springframework.test.context.support.DirtiesContextTestExecutionListener@51bde877, org.springframework.test.context.transaction.TransactionalTestExecutionListener@60b85ba1, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@492fc69e, org.springframework.test.context.event.EventPublishingTestExecutionListener@117632cf, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@2fb68ec6, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@d71adc2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@3add81c4, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1a1d3c1a, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1c65121, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@159e366]
+01:00:42.871 [Test worker] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@5c371e13 testClass = ShopApplicationTests, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@530a8454 testClass = ShopApplicationTests, locations = '{}', classes = '{class com.huellitas.shop.ShopApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true}', contextCustomizers = set[org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@242aa8d9, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@a8c1f44, org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@7a8fa663, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@1623134f, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@4de41af9, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@34f6515b], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -&gt; true]], class annotated with @DirtiesContext [false] with mode [null].
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -285,15 +285,15 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::               (v2.7.15)
 
-2024-04-05 00:31:10.785  INFO 19752 --- [    Test worker] com.huellitas.shop.ShopApplicationTests  : Starting ShopApplicationTests using Java 17.0.9 on JAGUAR-DESKTOP with PID 19752 (started by rey_j in D:\Usuarios\rey_j\Documentos\backendHuellitas-PI\shop)
-2024-04-05 00:31:10.788  INFO 19752 --- [    Test worker] com.huellitas.shop.ShopApplicationTests  : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-04-05 00:31:11.995  INFO 19752 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-04-05 00:31:12.125  INFO 19752 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 7 JPA repository interfaces.
-2024-04-05 00:31:13.396  INFO 19752 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-04-05 00:31:13.560  INFO 19752 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-04-05 00:31:13.935  INFO 19752 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-04-05 00:31:14.175  INFO 19752 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-05 00:31:15.284 ERROR 19752 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2024-04-05 01:00:43.399  INFO 22500 --- [    Test worker] com.huellitas.shop.ShopApplicationTests  : Starting ShopApplicationTests using Java 17.0.9 on JAGUAR-DESKTOP with PID 22500 (started by rey_j in D:\Usuarios\rey_j\Documentos\backendHuellitas-PI\shop)
+2024-04-05 01:00:43.406  INFO 22500 --- [    Test worker] com.huellitas.shop.ShopApplicationTests  : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-04-05 01:00:44.521  INFO 22500 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-05 01:00:44.661  INFO 22500 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 128 ms. Found 7 JPA repository interfaces.
+2024-04-05 01:00:45.946  INFO 22500 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-05 01:00:46.111  INFO 22500 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-04-05 01:00:46.503  INFO 22500 --- [    Test worker] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-05 01:00:46.700  INFO 22500 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-05 01:00:47.809 ERROR 22500 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 org.postgresql.util.PSQLException: El intento de conexión falló.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331) ~[postgresql-42.3.8.jar:42.3.8]
@@ -442,7 +442,7 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235) ~[postgresql-42.3.8.jar:42.3.8]
 	... 135 common frames omitted
 
-2024-04-05 00:31:15.295  WARN 19752 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
+2024-04-05 01:00:47.827  WARN 22500 --- [    Test worker] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
 
 org.postgresql.util.PSQLException: El intento de conexión falló.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331) ~[postgresql-42.3.8.jar:42.3.8]
@@ -591,9 +591,9 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235) ~[postgresql-42.3.8.jar:42.3.8]
 	... 135 common frames omitted
 
-2024-04-05 00:31:15.316  INFO 19752 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
-2024-04-05 00:31:16.268  INFO 19752 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-04-05 00:31:17.277 ERROR 19752 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
+2024-04-05 01:00:47.863  INFO 22500 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2024-04-05 01:00:48.844  INFO 22500 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-05 01:00:49.861 ERROR 22500 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Exception during pool initialization.
 
 org.postgresql.util.PSQLException: El intento de conexión falló.
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:331) ~[postgresql-42.3.8.jar:42.3.8]
@@ -741,14 +741,14 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235) ~[postgresql-42.3.8.jar:42.3.8]
 	... 134 common frames omitted
 
-2024-04-05 00:31:17.285  WARN 19752 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001
-2024-04-05 00:31:17.286 ERROR 19752 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : El intento de conexión falló.
-2024-04-05 00:31:17.304 ERROR 19752 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2024-04-05 00:31:17.306  WARN 19752 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
-2024-04-05 00:31:17.316  INFO 19752 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
+2024-04-05 01:00:49.869  WARN 22500 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 08001
+2024-04-05 01:00:49.870 ERROR 22500 --- [    Test worker] o.h.engine.jdbc.spi.SqlExceptionHelper   : El intento de conexión falló.
+2024-04-05 01:00:49.886 ERROR 22500 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+2024-04-05 01:00:49.888  WARN 22500 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+2024-04-05 01:00:49.900  INFO 22500 --- [    Test worker] ConditionEvaluationReportLoggingListener : 
 
 Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2024-04-05 00:31:17.366 ERROR 19752 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
+2024-04-05 01:00:49.935 ERROR 22500 --- [    Test worker] o.s.boot.SpringApplication               : Application run failed
 
 org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.3.29.jar:5.3.29]
@@ -909,7 +909,7 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
 	at org.postgresql.core.v3.ConnectionFactoryImpl.openConnectionImpl(ConnectionFactoryImpl.java:235) ~[postgresql-42.3.8.jar:42.3.8]
 	... 134 common frames omitted
 
-2024-04-05 00:31:17.374 ERROR 19752 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@5a12c728] to prepare test instance [com.huellitas.shop.ShopApplicationTests@652f26da]
+2024-04-05 01:00:49.941 ERROR 22500 --- [    Test worker] o.s.test.context.TestContextManager      : Caught exception while allowing TestExecutionListener [org.springframework.test.context.web.ServletTestExecutionListener@5a12c728] to prepare test instance [com.huellitas.shop.ShopApplicationTests@649009d6]
 
 java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:98) ~[spring-test-5.3.29.jar:5.3.29]
@@ -1084,7 +1084,7 @@ Caused by: java.net.UnknownHostException: ${PROD_DB_HOST}
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.7</a> at 5 abr. 2024 00:31:17</p>
+<a href="http://www.gradle.org">Gradle 8.7</a> at 5 abr. 2024 01:00:50</p>
 </div>
 </div>
 </body>
