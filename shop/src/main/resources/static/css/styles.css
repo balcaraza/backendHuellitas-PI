@@ -1,0 +1,220 @@
+
+/*navbar general*/
+nav{  
+    padding: 10px ;
+    background-color: #fAf9f3;
+}
+/*navbar con enlace a otras paginas*/
+.navbar-nav, .nav-link {
+    margin-right: 55px; /* Márgenes a la derecha de cada enlace */
+    color: #C45564;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    
+}
+/*navbar con imagen del logo de Huellitas*/
+nav img{
+    margin-right: 150px;
+    height: 75px;
+    width: 115px;
+}
+/*navbar imagen del carrito de compras*/
+.nav-img{
+    margin-right: 55px;
+    height: 50px;
+    width: 50px;
+}
+/*navbar imagen del carrito de compras para hacerlo interactivo con el mouse*/
+.nav-img:hover{
+    transform: scale(1.1);
+    /* cursor: url("../src/img/pataNegro2.png"), auto; */
+}
+/*Cambio de color del button o de mi boton*/
+.navbar .btn-c, .carousel .linkedin{
+    background-color: #007BA7 ;
+    color: white;
+    padding: 10px 40px;
+}
+/* Agrega un estilo al botón cuando el mouse está sobre él */
+.navbar .btn-c:hover, .carousel .linkedin:hover{
+    background-color: #007BA7;
+    opacity: 0.7;
+    color: white;
+    transform: scale(1.1);
+    /* cursor: url("../src/img/pataNegro2.png"), auto; */
+}
+/*Clases para encabezados y textos*/
+.encabezado{
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-optical-sizing: auto;
+    font-size: 40pt;
+    margin-top: 56px
+}
+.titular{
+    font-family: 'Roboto',sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-optical-sizing: auto;
+}
+.parrafo{
+    font-family: "Roboto",sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-optical-sizing: auto;
+}
+/*Colores para encabezados y textos*/
+.amarillo{
+    display:inline;
+    color: #FCD168;
+    Text-shadow: 0.5px 0.5px 1px #383B47;
+    /* padding-top: 20px;
+    margin-top: 10px; */
+    /* color:#FCD168;
+    text-shadow: 0.5px 0.5px 1px #383B47 ;
+    display:inline; */
+
+}
+.negro{
+    color:#383B47;
+    margin-top: 10px;
+    display: inline-block;
+}
+.espacio, h5{
+    margin-top: 90px;
+    margin-bottom: 20px;
+}
+
+.linkedin{
+    margin: 5px;
+}
+
+/* Estilos específicos para Laptop L (máximo ancho de 1440px) */
+@media (max-width: 1440px) {
+    /*navbar con imagen del logo de Huellitas*/
+    nav img {
+        margin-right: 200px;
+        height: 65px;
+        width: 100px;
+    }
+    /*navbar con enlace a otras paginas*/
+    .navbar-nav .nav-link {
+        margin: 5px;
+        margin-right: 55px;
+        font-size: 20px; 
+    }
+    /*navbar general*/
+    nav {
+        padding: 5px;
+    }
+    /*navbar imagen del carrito de compras*/
+    .nav-img{
+        margin: 5px;
+        margin-right: 55px;  
+        height: 40px;
+        width: 40px; 
+    }
+    /* Boton ingresar de mi navbar */
+    .navbar .btn-c{
+        margin: 5px;
+        padding: 8px 30px;
+        font-size: 20px;
+    }
+
+}
+@media (max-width: 1400px) {
+    /*navbar con imagen del logo de Huellitas*/
+    nav img {
+        margin-right: 100px;
+        height: 65px;
+        width: 100px;
+    }
+    /*navbar con enlace a otras paginas*/
+    .navbar-nav .nav-link {
+        margin: 5px;
+        margin-right: 30px;
+        font-size: 20px; 
+    }
+    /*navbar general*/
+    nav {
+        padding: 5px;
+    }
+    /*navbar imagen del carrito de compras*/
+    .nav-img{
+        margin: 5px;
+        margin-right: 30px;  
+        height: 40px;
+        width: 40px; 
+    }
+    /* Boton ingresar de mi navbar */
+    .navbar .btn-c{
+        margin: 5px;
+        padding: 8px 30px;
+        font-size: 20px;
+    }
+
+}
+/* Estilos específicos para Laptop (máximo ancho de 1024px) */
+@media (max-width: 1024px) {
+    /*navbar con imagen del logo de Huellitas*/
+    nav img {
+        margin-right: 55px;
+        height: 65px;
+        width: 100px;
+    }
+    /*navbar con enlace a otras paginas*/
+    .navbar-nav .nav-link {
+        margin-right: 30px;
+        font-size: 18px; 
+    }
+    /*navbar general*/
+    nav {
+        padding: 10px;
+    }
+    /*navbar imagen del carrito de compras*/
+    .nav-img{
+        margin: 5px;
+        margin-right: 35px;
+        height: 32px;
+        width: 32px;   
+    }
+    /* Boton ingresar de mi navbar */
+    .navbar .btn-c{
+        margin: 5px;
+        padding: 5px 30px;
+        font-size: 18px;
+    }
+
+}
+
+
+/*estilos especificos para el footer*/
+/*
+body{
+    display:grid;
+    min-height: 100vh;una parte de viewport equivalente a 100(pantalla)
+    grid-template-rows: auto 1fr auto;tamaño de linea 
+    de los rows 1 fraccion, con relacion a las demas
+    margin-top: 50px; alto
+  } */
+
+footer{
+    left: 0;
+    bottom: 0;
+    padding-top: 25px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;/*aplilamiento*/
+    justify-content: space-evenly;/*separa el contenido*/
+    width: 100%;/*ancho 100 del dispositivo*/
+    background-color:#C45564; 
+    font-family: 'Roboto', sans-serif;
+    font-size: 14pt;  
+    justify-content: space-evenly;/*especifico para los div del footer*/
+    /*position: fixed;*/
+    /* bottom: 0;*/
+}
+footer .d-flex img{/*separacion entre imagenes*/
+    margin: 5px;
+} 

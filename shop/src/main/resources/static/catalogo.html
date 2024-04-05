@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Meta general -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--Fuentes Generales -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!--Estilos generales-->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="./css/catalogo.css">
+    <!--  -->
+    <script src="https://kit.fontawesome.com/fd83881aca.js" crossorigin="anonymous"></script>
+    
+    
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!--Recursos Especificos-->
+    <link rel="shortcut icon" href="./src/img/huellitasIcon.png" type="image/x-icon">
+
+    <title>Catálogo</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-xl fixed-top">
+      <div class="container">
+        <a href="index.html"><img src="/src/img/LogoHuellitas.png" alt="Logo Huellitas" /></a>
+        <!--Imagen del logo de la pagina web Huellitas-->
+
+        <!-- Boton para que el menu sea desplegable al momento de ser responsiva, entre 320px(Mobile) a 768px(Tablet) -->
+        <button
+          class="navbar-toggler navbar-toggler-menu"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="catalogo.html" >Productos</a>
+            <a class="nav-link" href="tipsRapidos.html" >Tips</a>
+            <a class="nav-link" href="acercaNosotros.html" >Nosotros</a>
+            <a class="nav-link" href="contacto.html">Contacto</a>
+             <!--Boton para ingresar a la cuenta del usuario-->
+             <a href="registro.html"  rel="noopener noreferrer" style="text-decoration: none;">
+              <button type="button" class="btn btn-lg btn-c" id="ingresar" style="display: none;">Ingresar</button>
+            </a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="user" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="display: none;">
+                Perfil
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="carrito.html">Carrito</a></li>
+                <li><a class="dropdown-item" href="favoritos.html">Favoritos</a></li>
+                <li><a  id="cerrarSesion"  class="dropdown-item" href="#">Cerrar sesión</a></li>
+              </ul>
+            </li>
+          </div>
+        </div>
+      </div>
+    </nav>
+      
+    <div class="encabezado-principal">
+      <img src="./src/img/ManchaAmarilla.png" alt="" class="img-fondo-perro">
+      <img src="./src/img/Productos/PerritoProductos.png" alt="" class="img-perro">
+      
+      <div class="encabezadoMovil">
+      <h2 class="encabezado negro">
+        Explora nuestro catálogo cuidadosamente y descubre los kits y productos que <span class="amarillo">transformarán la vida de tus mascotas</span>
+      </h2>
+      </div>
+    </div>
+    <div style="background-color: #C45564; ">
+      
+    </div>
+
+      <!-- Empiezan las Cards de productos -->
+      <main class="container">
+        <div id="list-items" class="items-card">
+        </div>
+      
+      
+    
+      </main> <!--main class="container"-->
+      
+      
+
+    <!--footer-->
+    <br />
+    <footer>
+      <div class="col-md-4 d-flex align-items-center mt-10">
+        <!--resolucion-->
+        <p style="color: white">
+          <br />
+          © Huellitas SA de CV <br />
+          Todos los derechos reservados <br />
+        </p>
+      </div>
+      <div class="col-md-4 d-flex justify-content-spac" id="footerImags">
+        <a href="#"><img src="/src/img/facebook.png" alt="facebook" /></a>
+        <a href="#"><img src="/src/img/instagram.png" alt="instagram" /></a>
+        <a href="#"><img src="/src/img/twitter.png" alt="twitter" /></a>
+      </div>
+    </footer>
+    <!--footer-->
+    <!--Script bootstrap-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <!--Script Custom-->
+    <script src="./js/catalogo.js"></script>
+    <script src="js/verificarSesion.js" ></script>
+  
+  </body>
+</html>
